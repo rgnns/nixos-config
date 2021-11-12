@@ -1,19 +1,82 @@
 # NixOS Configuration
 
-## Myrkheim
+## Installation
 
-### About
+1. Acquire NixOS:
+
+    ```sh
+    wget -O nixos.iso https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso
+    cp nixos.iso /dev/sd[0..9]
+    ```
+
+1. Boot into the installer.
+
+1. Switch to root user: `sudo -i`.
+
+1. Connect to WiFi.
+
+    ```sh
+    ifconfig # to find interface
+    wpa_supplicant -B -i interface -c <(wpa_passphrase 'SSID' 'password')
+    ```
+
+1. Partition and mount.
+
+    ```sh
+    lsblk # to find device. i.e. nvme0n1
+
+    parted /dev/nvme0n1 -- mklabel gpt
+    parted /dev/nvme0n1 -- mkpart primary 512MiB -8GiB
+    parted -a optimal /dev/nvme0n1 -- mkpart primary linux-swap -8GiB 100%
+    parted /dev/nvme0n1 -- mkpart ESP fat32 1MiB 512MiB
+    parted /dev/nvme0n1 -- set 3 esp on
+
+    mkfs.ext4 -L nixos /dev/nvme0n1p1
+    mkswap -L swap /dev/nvme0n1p2
+    mkfs.fat -F 32 -n boot /dev/nvme0n1p3
+
+    mount /dev/disk/by-label/nixos /mnt
+    mkdir -p /mnt/boot
+    mount /dev/disk/by-label/boot /mnt/boot
+    swapon /dev/nvme0n1p2
+    ```
+
+1. Install flake.
+
+    ```sh
+    nix-shell -p git
+    git clone https://gitlab.com/gabriellievano/nixos-config.git
+    exit
+
+    cd nixos-config
+    nix-shell
+    nixos-install --root /mnt --option pure-eval no --flake .#host
+    ```
+
+1. Reboot
+
+1. `passwd gl`
+
+## Usage
+
+- Updating: `nixos-rebuild switch --flake .#host --option pure-eval no`
+
+## Hosts
+
+### Myrkheim
+
+#### About
 
 - Memory: 62.5GiB
 - Processor: Intel Core i5-10210U CPU @ 1.60GHz * 8
 - Graphics: Mesa Intel UHD Graphics (CML GT2)
 - Disk Capacity: 1.0TB
 
-### Firmware
+#### Firmware
 
 System76 Meerkat (meer5)
 
-### Displays
+#### Displays
 
 To get information:
 
@@ -29,6 +92,8 @@ for aCard in /sys/class/drm/card*
 done
 ```
 
+##### LG HDR 4K
+
 - Vendor: GSM
 - Model Name: LG HDR 4K
 - Resolution: 3840x2160 (16:9)
@@ -37,35 +102,3 @@ done
 - HiDPI: true
 - Mode: Enable to render LoDPI displays at HiDPI resolution
 - HorizSync: 134.0kHz
-
-#### Sections
-
-```
-Section "Monitor"
-Identifier "LG HDR 4K"
-DisplaySize 600 340
-Gamme 2.20
-Option "DPMS" "true"
-HorizSync 30-135
-VertRefresh 56-61
-Modeline 	"Mode 6" 148.50 1920 2008 2052 2200 1080 1084 1089 1125 +hsync +vsync
-Modeline 	"Mode 0" 533.25 3840 3888 3920 4000 2160 2214 2219 2222 +hsync -vsync
-Modeline 	"Mode 1" 266.64 3840 3848 3992 4000 2160 2214 2219 2222 +hsync -vsync
-Modeline 	"Mode 2" 148.500 1920 2008 2052 2200 1080 1084 1089 1125 +hsync +vsync
-Modeline 	"Mode 3" 74.250 1280 1390 1420 1650 720 725 730 750 +hsync +vsync
-Modeline 	"Mode 4" 27.027 720 736 798 858 480 489 495 525 -hsync -vsync
-Modeline 	"Mode 5" 25.200 640 656 752 800 480 490 492 525 -hsync -vsync
-Modeline 	"Mode 7" 241.50 2560 2608 2640 2720 1440 1443 1448 1481 +hsync -vsync
-Option "PreferredMode" "Mode 6"
-EndSection
-
-Section "Screen"
-Identifier "Default Screen"
-Device "Generic Video Card"
-Monitor "LG HDR 4K"
-DefaultDepth 24
-SubSection "Display"
-Modes "3840x2160"
-EndSubSection
-EndSection
-```
