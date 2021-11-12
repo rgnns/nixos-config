@@ -102,3 +102,24 @@ done
 - HiDPI: true
 - Mode: Enable to render LoDPI displays at HiDPI resolution
 - HorizSync: 134.0kHz
+
+## Fonts
+
+- DejaVu Sans Mono
+- DejaVu Sans
+- DejaVu Serif
+- Fira Mono
+- Fira Sans
+- Liberation Mono
+- Liberation Sans
+- Liberation Serif
+- Nimbus Mono
+- Nimbus Roman
+- Nimbus Sans
+- Noto Color Emoji
+- Noto Sans
+- Noto Serif
+- Open Sans
+- Roboto Slab
+- Ubuntu
+- Ubuntu Mono
