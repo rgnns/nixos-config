@@ -19,6 +19,7 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
   hardware.pulseaudio = {
+    enable = true;
     package = pkgs.pulseaudioFull;
     extraModules = [ pkgs.pulseaudio-modules-bt ];
   };
