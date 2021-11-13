@@ -57,6 +57,7 @@ with lib.my;
     cached-nix-shell
     git
     gnumake
+    psmisc
     networkmanager
     vim
     wget

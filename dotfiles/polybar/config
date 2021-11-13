@@ -1,84 +1,103 @@
 [colors]
-black = ${xrdb:color0}
-magenta = ${xrdb:color5}
-yellow = ${xrdb:color3}
+trans = #00000000
+white = #ffffff
+black = #000000
 
-bg-dark = #181a23
-fg = ${colors.magenta}
-fg-alt = #373844
+bg = #ffffff
+fg = #2e2e2e
+fg-alt = #424242
 
-alert = ${colors.yellow}
-accent = #604c7e
+acolor = #e53935
+curgent = #43a047
+coccupied = #1e88e5
 
-[global/wm]
-margin-top = 0
-margin-bottom = 34
+## Material Colors
+red = #e53935
+pink = #d81b60
+purple = #8e24aa
+deep-purple = #5e35b1
+indigo = #3949ab
+blue = #1e88e5
+light-blue = #039be5
+cyan = #00acc1
+teal = #00897b
+green = #43a047
+light-green = #7cb342
+lime = #c0ca33
+yellow = #fdd835
+amber = #ffb300
+orange = #fb8c00
+deep-orange = #f4511e
+brown = #6d4c41
+grey = #757575
+blue-gray = #546e7a
 
 [bar/main]
 monitor = ${env:MONITOR}
-monitor-strict = true
 enable-ipc = true
 wm-restack = i3
-override-redirect = true
-fixed-center = true
+override-redirect = false
+
+fixed-center = false
 width = 100%
-height = 34
+height = 40
 offset-x = 0
 offset-y = 0
-bottom = true
-overline-size = 0
-overline-color = #f00
-underline-size = 0
-underline-color = #00f
-border-bottom-size = 0
-border-top-size = 1
-border-color = ${colors.bg-dark}
 padding-left = 2
 padding-right = 2
-module-margin-left = 0
-module-margin-right = 0
-modules-left = pulseaudio pad cpu memory pad fs
-modules-center = i3
-modules-right = wlan pad date
+module-margin-left = 1
+module-margin-right = 1
 
-font-0 = "Fira Code:size=13;2"
-font-1 = "Wuncon Siji:pixelsize=16;2"
-font-2 = "Siji:pixelsize=14;2"
-font-3 = "FontAwesome:size=14;2"
+modules-left = pulseaudio cpu memory fs
+modules-center = workspaces
+modules-right = wlan date
 
-[module/i3]
+background = ${colors.bg}
+foreground = ${colors.fg}
+border-color = ${colors.bg}
+border-size = 3
+
+font-0 = "Fira Code:size=17;2"
+font-1 = "Material Icons:size=20;4"
+font-2 = "FontAwesome:size=24;2"
+
+[module/workspaces]
 type = internal/i3
-pin-workspaces = true
-strip-wsnumbers = true
-index-sort = true
+pin-workspaces = false
 enable-click = true
 enable-scroll = false
+format-padding = 0
 wrapping-scroll = false
 reverse-scroll = false
-fuzzy-match = true
-ws-icon-0 = 1;1
-ws-icon-1 = 2;2
-ws-icon-2 = 3;3
-ws-icon-3 = 4;4
-ws-icon-4 = 5;5
-ws-icon-5 = 6;6
-ws-icon-6 = 7;7
-ws-icon-7 = 8;8
-ws-icon-default = 
-format = <label-state> <label-mode>
-label-padding = 1
-label-focused = %icon%
-label-focused-background = ${colors.bg-dark}
-label-focused-foreground = ${colors.fg}
-label-focused-padding = 1
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-default =
+
+format = <label-state>
+label-active = %icon%
+label-active-padding = 2
+label-active-foreground = ${colors.acolor}
+label-active-underline = ${colors.acolor}
+
 label-occupied = %icon%
-label-occupied-foreground = ${colors.accent}
-label-occupied-padding = 1
-label-urgent-foreground = ${colors.alert}
-label-urgent-padding = 1
+label-occupied-padding = 2
+label-occupied-foreground = ${colors.coccupied}
+label-occupied-underline = ${colors.coccupied}
+
+label-urgent = %icon%
+label-urgent-padding = 2
+label-urgent-foreground = ${colors.curgent}
+label-urgent-underline = ${colors.curgent}
+
 label-empty = %icon%
-label-empty-foreground = ${colors.fg-alt}
-label-empty-padding = 1
+label-empty-padding = 2
+label-empty-foreground = ${colors.fg}
 
 [module/date]
 type = internal/date
@@ -90,85 +109,40 @@ time = %I:%M %p
 time-alt = %H:%M:%S
 format-prefix = ""
 format-prefix-padding = 1
-format-prefix-foreground = ${colors.accent}
 
 [module/fs]
 type = internal/fs
 mount-0 = /
 interval = 30
 format-mounted = "<bar-used>"
-format-mounted-foreground = ${colors.accent}
+format-mounted-foreground = ${colors.acolor}
 format-unmounted =
 label-unmounted =
 label-unmounted-foreground = ${colors.fg-alt}
-bar-used-indicator =
-bar-used-width = 8
-bar-used-foreground-0 = ${colors.fg}
-bar-used-foreground-1 = ${colors.fg}
-bar-used-foreground-2 = ${colors.yellow}
-bar-used-foreground-3 = ${colors.alert}
-bar-used-foreground-4 = ${colors.alert}
-bar-used-fill = |
-bar-used-empty = ¦
-bar-used-empty-foreground = ${colors.fg-alt}
 
 [module/cpu]
 type = internal/cpu
 interval = 2
 format = <bar-load>
 format-prefix = ""
-format-foreground = ${colors.accent}
 format-padding = 1
-bar-load-indicator =
-bar-load-width = 8
-bar-load-foreground-0 = ${colors.fg}
-bar-load-foreground-1 = ${colors.fg}
-bar-load-foreground-2 = ${colors.yellow}
-bar-load-foreground-3 = ${colors.alert}
-bar-load-foreground-4 = ${colors.alert}
-bar-load-fill = |
-bar-load-empty = ¦
-bar-load-empty-foreground = ${colors.fg-alt}
 
 [module/pulseaudio]
 type = internal/pulseaudio
-format-volume = <ramp-volume> <bar-volume>
-label-volume-foreground = ${colors.accent}
-format-muted-foreground = ${colors.alert}
-label-muted = 
-bar-volume-width = 8
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 1
-bar-volume-indicator-foreground = #ff
-bar-volume-fill = ─
-bar-volume-fill-font = 1
-bar-volume-empty = ─
-bar-volume-empty-font = 1
-bar-volume-empty-foreground = ${colors.fg-alt}
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%
+format-muted-prefix = " "
+label-muted = MUTE
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 [module/memory]
 type = internal/memory
 interval = 3
 format = <bar-used>
 format-prefix = ""
-format-prefix-foreground = ${colors.accent}
-format-padding-left = 1
-bar-used-indicator =
-bar-used-width = 8
-bar-used-foreground-0 = ${colors.fg}
-bar-used-foreground-1 = ${colors.fg}
-bar-used-foreground-2 = ${colors.yellow}
-bar-used-foreground-3 = ${colors.alert}
-bar-used-foreground-4 = ${colors.alert}
-bar-used-fill = |
-bar-used-empty = ¦
-bar-used-empty-foreground = ${colors.fg-alt}
-
-[module/redshift]
 
 [module/wlan]
 type = internal/network
@@ -178,17 +152,7 @@ format-connected = <ramp-signal>
 format-disconnected =
 format-disconnected-foreground =
 ramp-signal-0 = ""
-ramp-signal-0-foreground = ${colors.yellow}
 ramp-signal-1 = ""
-ramp-signal-1-foreground = ${colors.yellow}
 ramp-signal-2 = ""
-ramp-signal-2-foreground = ${colors.yellow}
 ramp-signal-3 = ""
-ramp-signal-3-foreground = ${colors.accent}
 ramp-signal-4 = ""
-ramp-signal-4-foreground = ${colors.fg}
-
-[module/pad]
-type = custom/text
-content = "   "
-content-foreground = ${colors.fg-alt}
