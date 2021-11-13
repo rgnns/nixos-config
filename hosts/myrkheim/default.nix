@@ -9,10 +9,7 @@
 
   modules.shell.zsh.enable = true;
   modules.tools.git.enable = true;
-  modules.desktop = {
-    enable = true;
-    i3.enable = true;
-  };
+  modules.desktop.i3.enable = true;
 
   programs.ssh.startAgent = true;
   services.openssh.startWhenNeeded = true;
