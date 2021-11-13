@@ -13,6 +13,15 @@
   programs.ssh.startAgent = true;
   services.openssh.startWhenNeeded = true;
 
+  # TODO: move to bluetooth module
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+  hardware.pulseaudio = {
+    package = pkgs.pulseaudioFull;
+    extraModules = [ pkgs.pulseaudio-modules-bt ];
+  };
+  hardware.bluetooth.config.General.Enable = "Source,Sink,Media,Socket";
+
   networking = {
     networkmanager.enable = true;
     interfaces.wlp0s20f3.useDHCP = false;
