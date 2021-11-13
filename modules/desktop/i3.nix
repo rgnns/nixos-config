@@ -14,6 +14,8 @@ in {
       lightdm
       dunst
       libnotify
+      rofi
+      rofi-pass
       termite # add to module
       (polybar.override {
         i3Support = true;
@@ -34,7 +36,7 @@ in {
           lightdm.greeters.mini.enable = true;
         };
         windowManager.i3.enable = true;
-        windowManager.i3.extraPackages = [ pkgs.lxappearance ];
+        windowManager.i3.extraPackages = with pkgs; [ dmenu i3lock lxappearance ];
       };
     };
   
@@ -51,7 +53,9 @@ in {
   
     home.configFile = {
       "i3" = { source = "${configDir}/i3"; recursive = true; };
-      # "polybar" = { source = "${configDir}/polybar"; recursive = true; };
+      "rofi" = { source = "${configDir}/rofi"; recursive = true; };
+      "rofi-pass" = { source = "${configDir}/rofi-pass"; recursive = true; };
+      "polybar" = { source = "${configDir}/polybar"; recursive = true; };
     };
   };
 }

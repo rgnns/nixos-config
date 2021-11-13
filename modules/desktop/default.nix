@@ -46,8 +46,6 @@ in {
       fontDir.enable = true;
     };
 
-    services.xserver.displayManager.lightdm.greeters.mini.user = config.user.name;
-
     services.picom = {
       backend = "glx";
       vSync = true;
@@ -112,6 +110,7 @@ in {
     env.QT_QPA_PLATFORMTHEME = "gnome";
     env.QT_STYLE_OVERRIDE = "kvantum";
 
+    services.xserver.displayManager.lightdm.greeters.mini.user = config.user.name;
     services.xserver.displayManager.sessionCommands = ''
       export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
     '';
