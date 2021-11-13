@@ -14,6 +14,7 @@ in {
       lightdm
       dunst
       libnotify
+      termite # add to module
       (polybar.override {
         i3Support = true;
         nlSupport = true;
