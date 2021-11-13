@@ -43,7 +43,7 @@ in {
       wantedBy = [ "default.target" ];
       serviceConfig.Restart = "always";
       serviceConfig.RestartSec = 2;
-      serviceConfig.ExecStart = "${pkgs.duns}/bin/dunst";
+      serviceConfig.ExecStart = "${pkgs.dunst}/bin/dunst";
     };
   
     home.configFile = {
