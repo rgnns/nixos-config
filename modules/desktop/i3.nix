@@ -27,6 +27,7 @@ in {
       redshift.enable = true;
       xserver = {
         enable = true;
+        desktopManager.xterm.enable = true;
         displayManager = {
           defaultSession = "none+i3";
           lightdm.enable = true;
@@ -45,6 +46,8 @@ in {
       serviceConfig.RestartSec = 2;
       serviceConfig.ExecStart = "${pkgs.dunst}/bin/dunst";
     };
+
+    env.TERMINAL = "termite";
   
     home.configFile = {
       "i3" = { source = "${configDir}/i3"; recursive = true; };
