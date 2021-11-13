@@ -20,7 +20,7 @@
     package = pkgs.pulseaudioFull;
     extraModules = [ pkgs.pulseaudio-modules-bt ];
   };
-  hardware.bluetooth.config.General.Enable = "Source,Sink,Media,Socket";
+  hardware.bluetooth.settings.General.Enable = "Source,Sink,Media,Socket";
 
   networking = {
     networkmanager.enable = true;

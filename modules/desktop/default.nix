@@ -23,7 +23,7 @@ in {
       }
     ];
 
-    user.packages = with pkgs; {
+    user.packages = with pkgs; [
       feh
       libqalculate
       libsForQt5.qtstyleplugin-kvantum
@@ -38,7 +38,7 @@ in {
         exec = "scratch \"${tmux}/bin/tmux new-session -s calc -n calc qalc\"";
         categories = "Development";
       })
-    };
+    ];
 
     fonts = {
       enableDefaultFonts = true;
@@ -72,7 +72,7 @@ in {
         "class_g = 'firefox' && argb"
         "class_g = 'Rofi'"
         "_GTK_FRAME_EXTENTS@:c"
-        "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'
+        "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
         "window_type = 'desktop'"
         "window_type = 'dock'"
         "window_type = 'dropdown_menu'"
@@ -112,7 +112,7 @@ in {
     env.QT_QPA_PLATFORMTHEME = "gnome";
     env.QT_STYLE_OVERRIDE = "kvantum";
 
-    service.xserver.displayManager.sessionCommands = ''
+    services.xserver.displayManager.sessionCommands = ''
       export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
     '';
 
