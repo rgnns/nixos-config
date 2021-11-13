@@ -11,6 +11,8 @@ alert = ${colors.yellow}
 accent = #604c7e
 
 [global/wm]
+margin-top = 0
+margin-bottom = 34
 
 [bar/main]
 monitor = ${env:MONITOR}
@@ -19,7 +21,6 @@ enable-ipc = true
 wm-restack = i3
 override-redirect = true
 fixed-center = true
-
 width = 100%
 height = 34
 offset-x = 0
@@ -36,12 +37,14 @@ padding-left = 2
 padding-right = 2
 module-margin-left = 0
 module-margin-right = 0
-
-font-0 = dejavu sans mono:style=regular:size=13;2
-
 modules-left = pulseaudio pad cpu memory pad fs
 modules-center = i3
 modules-right = wlan pad date
+
+font-0 = "Fira Code:size=13;2"
+font-1 = "Wuncon Siji:pixelsize=16;2"
+font-2 = "Siji:pixelsize=14;2"
+font-3 = "FontAwesome:size=14;2"
 
 [module/i3]
 type = internal/i3

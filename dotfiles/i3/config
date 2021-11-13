@@ -20,7 +20,7 @@ client.placeholder       #000000 #909090 #FFFFFF #268BD2
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Use pactl to adjust volume in PulseAudio.
-exec --no-startup-id "picom --experimental-backend"
+exec --no-startup-id picom -CGb
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -28,6 +28,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun -columns 2"
 bindsym $mod+p exec --no-startup-id "rofi-pass -modi drun,run -show drun"
 
+for_window [class=".*"] border pixel 0
 for_window [class=".*copyq.*"] floating enable resize set 768 600,move position center
 for_window [class="Gpick"] floating enable
 for_window [class="GoldenDict"] floating enable
@@ -46,8 +47,13 @@ focus_follows_mouse yes
 new_window pixel 0
 new_float pixel 0
 
+# gaps
+gaps inner 7
+gaps outer -2
+smart_gaps on
+
 # hide_edge_borders both
-default_border pixel 1
+default_border pixel 0
 floating_modifier $mod
 bindsym $mod+Shift+q kill
 
@@ -172,3 +178,5 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+

@@ -48,6 +48,7 @@ in {
         fira-code
         fira-code-symbols
         jetbrains-mono
+        siji
         font-awesome-ttf
       ];
     };

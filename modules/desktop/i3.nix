@@ -19,7 +19,7 @@ in {
       xst # add to module
       (polybar.override {
         i3Support = true;
-        nlSupport = true;
+        i3GapsSupport = true;
         pulseSupport = true;
       })
       (makeDesktopItem {
@@ -43,8 +43,16 @@ in {
           lightdm.enable = true;
           lightdm.greeters.mini.enable = true;
         };
-        windowManager.i3.enable = true;
-        windowManager.i3.extraPackages = with pkgs; [ dmenu i3lock lxappearance ];
+        windowManager.i3 = {
+          enable = true;
+          package = pkgs.i3-gaps;
+          extraPackages = with pkgs; [
+            dmenu
+            i3lock
+            i3status
+            lxappearance
+          ];
+        };
       };
     };
   
@@ -64,6 +72,7 @@ in {
     '';
   
     home.configFile = {
+      "dunst/dunstrc".source = "${configDir}/dunst/dunstrc";
       "i3" = { source = "${configDir}/i3"; recursive = true; };
       "rofi" = { source = "${configDir}/rofi"; recursive = true; };
       "rofi-pass" = { source = "${configDir}/rofi-pass"; recursive = true; };
