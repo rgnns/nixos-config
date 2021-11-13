@@ -48,8 +48,8 @@ new_window pixel 0
 new_float pixel 0
 
 # gaps
-gaps inner 7
-gaps outer -2
+gaps inner 3
+gaps outer -1
 smart_gaps on
 
 # hide_edge_borders both

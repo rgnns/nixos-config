@@ -39,6 +39,7 @@ wm-restack = i3
 override-redirect = false
 
 fixed-center = false
+line-size = 2
 width = 100%
 height = 40
 offset-x = 0
@@ -48,7 +49,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-modules-left = pulseaudio cpu memory fs
+modules-left = pulseaudio cpu memory
 modules-center = workspaces
 modules-right = wlan date
 
@@ -110,22 +111,25 @@ time-alt = %H:%M:%S
 format-prefix = ""
 format-prefix-padding = 1
 
-[module/fs]
-type = internal/fs
-mount-0 = /
-interval = 30
-format-mounted = "<bar-used>"
-format-mounted-foreground = ${colors.acolor}
-format-unmounted =
-label-unmounted =
-label-unmounted-foreground = ${colors.fg-alt}
-
 [module/cpu]
 type = internal/cpu
 interval = 2
 format = <bar-load>
 format-prefix = ""
 format-padding = 1
+bar-load-width = 10
+bar-load-foreground-0 = #c1cb7f
+bar-load-foreground-1 = #d9c37f
+bar-load-foreground-2 = #e4a48a
+bar-load-foreground-3 = #ed9896
+bar-load-indicator = ■
+bar-load-indicator-font = 0
+bar-load-indicator-foreground = #55fdf6e3
+bar-load-fill = ■
+bar-load-fill-font = 0
+bar-load-empty = □
+bar-load-empty-font = 0
+bar-load-empty-foreground = #99586e75
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -143,6 +147,17 @@ type = internal/memory
 interval = 3
 format = <bar-used>
 format-prefix = ""
+bar-used-width = 20
+bar-used-foreground-2 = #0000ff
+bar-used-foreground-3 = #00ff00
+bar-used-foreground-0 = #ff0000
+bar-used-indicator = |
+bar-used-indicator-foreground = #ff
+bar-used-fill = ─
+bar-used-fill-font = 2
+bar-used-empty = ─
+bar-used-empty-font = 2
+bar-used-empty-foreground = #444444
 
 [module/wlan]
 type = internal/network
