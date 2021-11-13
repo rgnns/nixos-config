@@ -49,12 +49,6 @@ in {
     services.picom = {
       backend = "glx";
       vSync = true;
-      fade = true;
-      fadeDelta = 5;
-      fadeSteps = [ 0.03 0.03 ];
-      shadow = true;
-      shadowOffsets = [ (-8) (-8) ];
-      shadowOpacity = 0.2;
       opacityRules = [
         "100:class_g = 'aseprite'"
         "100:class_g = 'feh'"
@@ -84,25 +78,7 @@ in {
           "window_type = 'desktop'"
           "window_type = 'dock'"
         ];
-        blur-background-fixed = true;
-        blur-background-frame = true;
-        blur-background = true;
-        blur-kern = "7x7box";
-        blur-method = "dual_kawase";
-        blur-strength = 7;
         dbe = false;
-        detect-client-leader = true;
-        detect-client-opacity = true;
-        detect-rounded-corners = true;
-        detect-transient = true;
-        glx-copy-from-front = false;
-        glx-no-stencil = true;
-        mark-ovredir-focused = true;
-        mark-wmwin-focused = true;
-        refresh-rate = 0;
-        unredir-if-possible = false;
-        use-ewmh-active-win = true;
-        xrender-sync-fence = true;
       };
     };
 
