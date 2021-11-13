@@ -8,6 +8,7 @@
   ];
 
   modules.shell.zsh.enable = true;
+  modules.tools.git.enable = true;
 
   programs.ssh.startAgent = true;
   services.openssh.startWhenNeeded = true;

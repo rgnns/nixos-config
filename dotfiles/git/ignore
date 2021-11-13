@@ -1,0 +1,22 @@
+#*#
+*~
+*.a
+*.aux
+.*.aux
+.direnv/
+.DS_Store
+*.dylib
+*.elc
+.envrc
+.envrc.cache
+.envrc.override
+*.glob
+*.la
+.makefile
+.Makefile.d
+*.o
+result
+result -*
+*.so
+tags
+TAGS

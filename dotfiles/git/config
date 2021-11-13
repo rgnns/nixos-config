@@ -1,0 +1,44 @@
+[user]
+	name = Gabriel Lievano
+	email = gl@gabriellievano.com
+[core]
+	whitespace = trailing-space,space-before-tab
+[init]
+	defaultBranch = main
+[github]
+	user = rgnns
+[gitlab]
+	user = gabriellievano
+[pull]
+	rebase = true
+[alias]
+	b = branch --color -v
+	c = commit
+	clone = clone --recursive
+	l = log --pretty=online --abbrev-commit
+	ll = log --graph --pretty=format:'%Cred%h%Creset -%Cblue%d%Creset %s %Cgreen(%cr)%Creset'
+	st = status
+	last = log -1 HEAD
+	uncommit = reset HEAD~1
+	recommit = commit --amend --no-edit
+	ranked-authors = !git authors | sort | uniq -c | sort -n
+	emails = !git log --format="%aE" | sort -u
+	email-domains = !git log --format=%aE" | awk -F'@' '{print %2}' | sort -u
+[mergeTool]
+	keepBackup = true
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	interactive = auto
+	ui = auto
+	sh = auto
+[diff]
+	ignoreSubmodules = dirty
+	renames = copies
+	nmemonicprefix = true
+[filter "lfs"]
+	required = true
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	clean = git-lfs clean -- %f
