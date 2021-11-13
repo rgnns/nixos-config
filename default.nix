@@ -48,6 +48,10 @@ with lib.my;
     keyMap = "us";
   };
 
+  environment.variables.DOTFILES = config.dotfiles.dir;
+  environment.variables.DOTFILES_BIN = config.dotfiles.binDir;
+  environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
+
   # the bare minimum
   environment.systemPackages = with pkgs; [
     cached-nix-shell

@@ -1,0 +1,13 @@
+!! Colors
+#define blk #1e2029
+#define mag #bd93f9
+#define ylw #f0c674
+
+*.color0: blk
+*.color3: ylw
+*.color5: mag
+
+st.scratch.font: JetBrainsMono:pixelsize=24
+
+st.font: JetBrainsMono:pixelsize=24
+st.borderpx: 10

@@ -16,11 +16,19 @@ in {
       libnotify
       rofi
       rofi-pass
-      termite # add to module
+      xst # add to module
       (polybar.override {
         i3Support = true;
         nlSupport = true;
         pulseSupport = true;
+      })
+      (makeDesktopItem {
+        name = "xst";
+        desktopName = "Suckless Terminal";
+        genericName = "Default terminal";
+        icon = "utilities-terminal";
+        exec = "${xst}/bin/xst";
+        categories = "Development;System;Utility";
       })
     ];
   
@@ -49,7 +57,11 @@ in {
       serviceConfig.ExecStart = "${pkgs.dunst}/bin/dunst";
     };
 
-    env.TERMINAL = "termite";
+    env.TERMINAL = "xst";
+
+    modules.shell.zsh.rcInit = ''
+      [ "$TERM" = xst-x256color ] && export TERM=xterm-256color
+    '';
   
     home.configFile = {
       "i3" = { source = "${configDir}/i3"; recursive = true; };

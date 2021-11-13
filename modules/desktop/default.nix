@@ -3,6 +3,7 @@
 with lib;
 with lib.my;
 let cfg = config.modules.desktop;
+    configDir = config.dotfiles.configDir;
 in {
   config = mkIf config.services.xserver.enable {
     assertions = [
@@ -26,7 +27,6 @@ in {
     user.packages = with pkgs; [
       feh
       libqalculate
-      libsForQt5.qtstyleplugin-kvantum
       qgnomeplatform
       xclip
       xdotool
@@ -44,11 +44,23 @@ in {
       enableDefaultFonts = true;
       enableGhostscriptFonts = true;
       fontDir.enable = true;
+      fonts = with pkgs; [
+        fira-code
+        fira-code-symbols
+        jetbrains-mono
+        font-awesome-ttf
+      ];
     };
 
     services.picom = {
       backend = "glx";
       vSync = true;
+      fade = true;
+      fadeDelta = 1;
+      fadeSteps = [ 0.01 0.012 ];
+      shadow = true;
+      shadowOffsets = [ (-8) (-8) ];
+      shadowOpacity = 0.22;
       opacityRules = [
         "100:class_g = 'aseprite'"
         "100:class_g = 'feh'"
@@ -61,34 +73,42 @@ in {
         "99:_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
       ];
       shadowExclude = [
-        "class_g = 'firefox' && argb"
-        "class_g = 'Rofi'"
-        "_GTK_FRAME_EXTENTS@:c"
-        "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
-        "window_type = 'desktop'"
-        "window_type = 'dock'"
-        "window_type = 'dropdown_menu'"
-        "window_type = 'menu'"
-        "window_type = 'popup_menu'"
+        "! name~='(rofi|scratch|Dunst)$'"
       ];
       settings = {
+        blur-kern = "7x7box";
+        blur-strength = 320;
         blur-background-exclude = [
           "class_g = 'Rofi'"
           "_GTK_FRAME_EXTENTS@:c"
           "window_type = 'desktop'"
           "window_type = 'dock'"
         ];
-        dbe = false;
+        glx-no-stencil = true;
+        shadow-radius = 12;
+        unredir-if-possible = true;
+        xrender-sync-fence = true;
       };
+    };
+
+    home.configFile = with config.modules; {
+      "xtheme/Xresources".source = "${configDir}/Xresources";
     };
 
     env.GTK_DATA_PREFIX = [ "${config.system.path}" ];
     env.QT_QPA_PLATFORMTHEME = "gnome";
-    env.QT_STYLE_OVERRIDE = "kvantum";
+    qt5 = { style = "gtk2"; platformTheme = "gtk2"; };
 
     services.xserver.displayManager.lightdm.greeters.mini.user = config.user.name;
+    services.xserver.displayManager.lightdm.greeters.mini.extraConfig = ''
+      text-color = "#ff79c6"
+      password-background-color = "#1E2029"
+      window-color = "#181a23"
+      border-color = "#181a23"
+    '';
     services.xserver.displayManager.sessionCommands = ''
       export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+      ${pkgs.xorg.xrdb}/bin/xrdb -merge "$XDG_CONFIG_HOME"/xtheme/Xresources
     '';
 
     system.userActivationScripts.cleanupHome = ''

@@ -29,4 +29,6 @@
       EndSubSection
     '';
   };
+
+  env.MONITOR = "DP-2";
 }

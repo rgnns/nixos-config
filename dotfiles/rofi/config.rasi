@@ -1,6 +1,6 @@
 configuration {
   modi: "window,drun,ssh,combi";
-  theme: "solarized";
-  font: "DejaVu Sans Mono 13";
+  theme: "gruvbox-light-hard";
+  font: "DejaVu Sans Mono 24";
   combi-modi: "window,drun,ssh";
 }
