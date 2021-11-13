@@ -4,7 +4,10 @@ with lib;
 with lib.my;
 {
   options = with types; {
-    user = mkOpts attrs [];
+    user = mkOption {
+      type = attrs;
+      default = {};
+    };
 
     dotfiles = {
       dir = mkOption {
@@ -20,7 +23,7 @@ with lib.my;
       };
       configDir = mkOption {
         type = path;
-        default = "${config.dotfiles.dir}/config";
+        default = "${config.dotfiles.dir}/dotfiles";
       };
       modulesDir = mkOption {
         type = path;

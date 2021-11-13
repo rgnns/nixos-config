@@ -3,7 +3,7 @@
 with lib;
 with lib.my;
 let sys = "x86_64-linux";
-{
+in {
   mkHost = path: attrs @ { system ? sys, ... }:
     let name = (removeSuffix ".nix" (baseNameOf path));
     in lib.nixosSystem {

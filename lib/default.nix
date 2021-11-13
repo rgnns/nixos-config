@@ -4,9 +4,11 @@ let
   inherit (modules) mapModules;
 
   modules = import ./modules.nix {
+    inherit lib;
+    self.attrs = import ./attrs.nix { inherit lib; self = {}; };
   };
 
-  myLib = lib.makeExtensible (self:
+  mylib = lib.makeExtensible (self:
     with self; mapModules ./.
       (file: import file { inherit self lib pkgs inputs; }));
 

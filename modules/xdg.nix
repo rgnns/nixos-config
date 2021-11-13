@@ -18,7 +18,7 @@
     };
     extraInit = ''
       export XAUTHORITY=/tmp/Xauthority
-      [ -e ~/.Xauthority ] && mv -f ~/.Xauthority "${XAUTHORITY}"
+      [ -e ~/.Xauthority ] && mv -f ~/.Xauthority "$XAUTHORITY"
     '';
   };
 }

@@ -1,6 +1,6 @@
 { self, lib, ... }:
 
-with bultins;
+with builtins;
 with lib;
 let inherit (self.attrs) mapFilterAttrs;
 in rec {
