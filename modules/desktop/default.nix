@@ -48,49 +48,11 @@ in {
         fira-code
         fira-code-symbols
         font-awesome-ttf
+        (iosevka-bin.override { variant = "ss15"; })
         jetbrains-mono
         material-icons
         siji
       ];
-    };
-
-    services.picom = {
-      backend = "glx";
-      vSync = true;
-      fade = true;
-      fadeDelta = 1;
-      fadeSteps = [ 0.01 0.012 ];
-      shadow = true;
-      shadowOffsets = [ (-8) (-8) ];
-      shadowOpacity = 0.22;
-      opacityRules = [
-        "100:class_g = 'aseprite'"
-        "100:class_g = 'feh'"
-        "100:class_g = 'Inkscape'"
-        "100:class_g = 'krita'"
-        "100:class_g = 'mpv'"
-        "100:class_g = 'Peek'"
-        "100:class_g = 'Rofi'"
-        "100:class_g = 'VirtualBox Machine'"
-        "99:_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
-      ];
-      shadowExclude = [
-        "! name~='(rofi|scratch|Dunst)$'"
-      ];
-      settings = {
-        blur-kern = "7x7box";
-        blur-strength = 320;
-        blur-background-exclude = [
-          "class_g = 'Rofi'"
-          "_GTK_FRAME_EXTENTS@:c"
-          "window_type = 'desktop'"
-          "window_type = 'dock'"
-        ];
-        glx-no-stencil = true;
-        shadow-radius = 12;
-        unredir-if-possible = true;
-        xrender-sync-fence = true;
-      };
     };
 
     home.configFile = with config.modules; {

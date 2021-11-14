@@ -45,5 +45,4 @@
 
 st.scratch.font: JetBrainsMono:pixelsize=24
 
-st.font: JetBrainsMono:pixelsize=24
-st.borderpx: 10
+st.font: IosevkaSS15:pixelsize=26

@@ -29,4 +29,6 @@
 
   # CPUs + Threads per Core
   nix.maxJobs = lib.mkDefault 16;
+
+  env.MONITOR = "DP-2";
 }

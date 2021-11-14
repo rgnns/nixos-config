@@ -33,7 +33,6 @@ in {
     ];
   
     services = {
-      picom.enable = false;
       redshift.enable = true;
       xserver = {
         enable = true;
@@ -55,15 +54,8 @@ in {
         };
       };
     };
-  
-    systemd.user.services."dunst" = {
-      enable = true;
-      description = "";
-      wantedBy = [ "default.target" ];
-      serviceConfig.Restart = "always";
-      serviceConfig.RestartSec = 2;
-      serviceConfig.ExecStart = "${pkgs.dunst}/bin/dunst";
-    };
+    modules.desktop.services.dunst.enable = true;
+    modules.desktop.services.picom.enable = true;
 
     env.TERMINAL = "xst";
 
@@ -72,7 +64,6 @@ in {
     '';
   
     home.configFile = {
-      "dunst/dunstrc".source = "${configDir}/dunst/dunstrc";
       "i3" = { source = "${configDir}/i3"; recursive = true; };
       "rofi" = { source = "${configDir}/rofi"; recursive = true; };
       "rofi-pass" = { source = "${configDir}/rofi-pass"; recursive = true; };
