@@ -9,6 +9,7 @@
 
   modules.shell.zsh.enable = true;
   modules.tools.git.enable = true;
+  modules.tools.gpg.enable = true;
   modules.tools.pass.enable = true;
   modules.tools.vim.enable = true;
   modules.desktop.i3.enable = true;
