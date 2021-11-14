@@ -13,7 +13,7 @@ in {
       (pass.withExtensions (exts: [
         exts.pass-otp
         exts.pass-genphrase
-      ]
+      ]))
     ];
   };
 }

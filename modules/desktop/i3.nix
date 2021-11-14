@@ -15,7 +15,6 @@ in {
       dunst
       libnotify
       rofi
-      rofi-pass
       xst # add to module
       (polybar.override {
         i3Support = true;
@@ -30,8 +29,8 @@ in {
         exec = "${xst}/bin/xst";
         categories = "Development;System;Utility";
       })
-    ];
-  
+    ] ++ lib.optional config.modules.tools.pass.enable rofi-pass;
+
     services = {
       redshift.enable = true;
       xserver = {

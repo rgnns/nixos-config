@@ -9,6 +9,13 @@ in {
   };
 
   config = mkIf cfg.enable {
+    user.packages = with pkgs; [
+      pinentry
+      pinentry-curses
+      pinentry-emacs
+      pinentry-gtk2
+    ];
+
     environment.variables.GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
 
     programs.gnupg.agent.enable = true;
@@ -18,7 +25,7 @@ in {
       enable-ssh-support
       default-cache-ttl 86400
       max-cache-ttl 86400
-      pinentry-program ${pkgs.pinentry-curses}/bin/pinentry-curses
+      pinentry-program ${pkgs.pinentry-gtk2}/bin/pinentry-gtk-2
     '';
   };
 }

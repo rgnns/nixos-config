@@ -37,6 +37,9 @@ exec s:SourceVimFile('bundles.vim')
 
 filetype plugin indent on
 syntax on
+set background=light
+let g:gruvbox_contrast_light='hard'
+colorscheme gruvbox
 
 set autoindent
 set autoread

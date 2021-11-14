@@ -9,6 +9,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [ firefox ];
+    user.packages = with pkgs; [
+      (firefox.override {
+        extraNativeMessagingHosts = lib.optional config.modules.tools.pass.enable passff-host;
+      })
+    ];
   };
 }

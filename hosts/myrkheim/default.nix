@@ -7,10 +7,16 @@
     ./hardware-configuration.nix
   ];
 
+  modules.shell.exa.enable = true;
   modules.shell.zsh.enable = true;
+  modules.tools.emacs = {
+    enable = true;
+    enableDoom = true;
+  };
   modules.tools.git.enable = true;
   modules.tools.gpg.enable = true;
   modules.tools.pass.enable = true;
+  modules.tools.ssh.enable = true;
   modules.tools.vim.enable = true;
   modules.desktop.i3.enable = true;
   modules.desktop.apps.firefox.enable = true;
