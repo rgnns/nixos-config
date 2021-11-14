@@ -13,9 +13,13 @@ in {
     user.packages = with pkgs; [ emacs ]
       ++ lib.optionals cfg.enableDoom [
         cmake
+        editorconfig
         fd
+        graphviz
         imagemagick
         jq
+        nixfmt
+        shellcheck
         sqlite
         (ripgrep.override { withPCRE2 = true; })
       ];
