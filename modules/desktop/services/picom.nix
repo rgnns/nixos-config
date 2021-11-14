@@ -21,7 +21,7 @@ in {
       wantedBy = [ "graphical-session.target" ];
 
       serviceConfig = {
-        ExecStart = "${pkgs.picom}/bin/picom --config $XDG_CONFIG_HOME/picom/picom.conf";
+        ExecStart = "${pkgs.picom}/bin/picom";
         Restart = "always";
         RestartSec = 3;
         Environment = [ "allow_rgb10_configs=false" ];

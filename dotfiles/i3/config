@@ -20,7 +20,7 @@ client.placeholder       #000000 #909090 #FFFFFF #268BD2
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Use pactl to adjust volume in PulseAudio.
-exec --no-startup-id picom -CGb
+# exec --no-startup-id picom -CGb
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork

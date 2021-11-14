@@ -55,7 +55,7 @@ in {
       };
     };
     modules.desktop.services.dunst.enable = true;
-    modules.desktop.services.picom.enable = true;
+    modules.desktop.services.picom.enable = false;
 
     env.TERMINAL = "xst";
 
