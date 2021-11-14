@@ -19,25 +19,25 @@ in {
       forwardAgent = true;
 
       hashKnownHosts = true;
-      userKnownHostsFile = "$XDG_CONFIG_HOME/ssh/known_hosts";
+      userKnownHostsFile = "~/.config/ssh/known_hosts";
 
       matchBlocks = {
         id_local = {
           host = lib.concatStringsSep " " [
             "myrkheim" "vanaheim"
           ];
-          identityFile = "$XDG_CONFIG_HOME/ssh/id_local";
+          identityFile = "~/.config/ssh/id_local";
           identitiesOnly = true;
         };
 
         id_github = {
           host = "github.com";
-          identityFile = "$XDG_CONFIG_HOME/ssh/id_github";
+          identityFile = "~/.config/ssh/id_github";
         };
 
         id_gitlab = {
           host = "gitlab.com";
-          identityFile = "$XDG_CONFIG_HOME/ssh/id_gitlab";
+          identityFile = "~/.config/ssh/id_gitlab";
         };
 
         keychain = {
