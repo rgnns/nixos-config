@@ -13,11 +13,13 @@ in {
     user.packages = with pkgs; [ emacs ]
       ++ lib.optionals cfg.enableDoom [
         cmake
-        editorconfig
+        editorconfig-core-c
+        elvish
         fd
         graphviz
         imagemagick
         jq
+        mdl
         nixfmt
         shellcheck
         sqlite
