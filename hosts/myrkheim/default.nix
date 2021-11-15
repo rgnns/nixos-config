@@ -21,6 +21,11 @@
   modules.desktop.i3.enable = true;
   modules.desktop.apps.firefox.enable = true;
 
+  user.packages = with pkgs; [
+    aseprite
+    spotify
+  ];
+
   programs.ssh.startAgent = true;
   services.openssh.startWhenNeeded = true;
 
