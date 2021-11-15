@@ -10,13 +10,23 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [ emacs ]
-      ++ lib.optionals cfg.enableDoom [
+    nixpkgs.overlays = [ inputs.emacs.overlay ];
+
+    user.packages = with pkgs; [
+      ((emacsPackagesNgGen emacsPgtkGcc).emacsWithPackages (epkgs: [
+        epkgs.vterm
+      ]))
+    ] ++ lib.optionals cfg.enableDoom [
+        binutils
         cmake
+        coreutils
         editorconfig-core-c
         elvish
         fd
+        gcc
+        git
         graphviz
+        gnutls
         imagemagick
         jq
         mdl
