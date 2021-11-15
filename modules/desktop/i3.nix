@@ -11,16 +11,12 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      lightdm
       dunst
+      i3status-rust
       libnotify
+      lightdm
       rofi
       xst # add to module
-      (polybar.override {
-        i3Support = true;
-        i3GapsSupport = true;
-        pulseSupport = true;
-      })
       (makeDesktopItem {
         name = "xst";
         desktopName = "Suckless Terminal";
@@ -47,7 +43,6 @@ in {
           extraPackages = with pkgs; [
             dmenu
             i3lock
-            i3status
             lxappearance
           ];
         };
@@ -62,11 +57,26 @@ in {
       [ "$TERM" = xst-x256color ] && export TERM=xterm-256color
     '';
   
-    home.configFile = {
-      "i3" = { source = "${configDir}/i3"; recursive = true; };
-      "rofi" = { source = "${configDir}/rofi"; recursive = true; };
-      "rofi-pass" = { source = "${configDir}/rofi-pass"; recursive = true; };
-      "polybar" = { source = "${configDir}/polybar"; recursive = true; };
+    home.configFile =
+      let restartI3 = ''
+        i3Socket=''${XDG_RUNTIME_DIR:-/run/user/$UID}/i3/ipc-socket.*
+        if [ -S $i3Socket ]; then
+          echo "Reloading i3"
+          $DRY_RUN_CMD ${pkgs.i3-gaps}/bin/i3-msg -s $i3Socket restart 1>/dev/null
+        fi
+      ''; in {
+        "i3" = {
+          source = "${configDir}/i3";
+          recursive = true;
+          onChange = restartI3;
+        };
+        "i3status-rust" = {
+          source = "${configDir}/i3status-rust";
+          recursive = true;
+          onChange = restartI3;
+        };
+        "rofi" = { source = "${configDir}/rofi"; recursive = true; };
+        "rofi-pass" = { source = "${configDir}/rofi-pass"; recursive = true; };
     };
   };
 }
