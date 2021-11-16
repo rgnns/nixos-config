@@ -1,5 +1,6 @@
-! Base16 Gruvbox light, hard
+Xfg.dpi: 240
 
+! Base16 Gruvbox light, hard
 #define base00 #f9f5d7
 #define base01 #ebdbb2
 #define base02 #d5c4a1

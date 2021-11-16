@@ -1,0 +1,17 @@
+{ options, config, lib, pkgs, ... }:
+
+with lib;
+with lib.my;
+let cfg = config.modules.desktop.apps.spotify;
+in {
+  options.modules.desktop.apps.spotify = {
+    enable = mkEnableOption "Spotify";
+  };
+
+  config = mkIf cfg.enable {
+    user.packages = with pkgs; [
+      (spotify.override { deviceScaleFactor = 2.5; })
+      spotify-tui
+    ];
+  };
+}

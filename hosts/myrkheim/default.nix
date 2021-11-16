@@ -3,7 +3,6 @@
 {
   imports = [
     ../home.nix
-    ../monitor-lg-hdr4k.nix
     ./hardware-configuration.nix
   ];
 
@@ -20,10 +19,10 @@
   modules.tools.vim.enable = true;
   modules.desktop.i3.enable = true;
   modules.desktop.apps.firefox.enable = true;
+  modules.desktop.apps.spotify.enable = true;
 
   user.packages = with pkgs; [
     aseprite
-    spotify
   ];
 
   programs.ssh.startAgent = true;
