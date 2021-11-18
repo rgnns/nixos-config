@@ -23,6 +23,7 @@
 
   user.packages = with pkgs; [
     aseprite
+    tuxguitar
   ];
 
   programs.ssh.startAgent = true;
