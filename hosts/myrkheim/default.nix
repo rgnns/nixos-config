@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
   ];
 
+  modules.dev.python.enable = true;
   modules.shell.exa.enable = true;
   modules.shell.zsh.enable = true;
   modules.tools.emacs = {
@@ -19,6 +20,7 @@
   modules.tools.vim.enable = true;
   modules.desktop.i3.enable = true;
   modules.desktop.apps.firefox.enable = true;
+  modules.desktop.apps.pcloud.enable = true;
   modules.desktop.apps.spotify.enable = true;
 
   user.packages = with pkgs; [
