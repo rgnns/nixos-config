@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "use nix" > .envrc
+
+read -r -d '' DEFAULTNIX << EOM
+let
+  pkgs = import <nixpkgs> {};
+in pkgs.mkShell {
+  buildInputs = with pkgs; [
+    nodejs
+
+    html-tidy
+    nodePackages.stylelint
+    nodePackages.js-beautify
+  ]
+}
+EOM
+
+echo "$DEFAULTNIX" > default.nix
