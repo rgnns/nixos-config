@@ -13,8 +13,8 @@ in {
       (makeDesktopItem {
         name = "tuxguitar";
         desktopName = "Tux Guitar";
-        genericName = "Tux Guitar";
-        icon = "guitar";
+        genericName = "Read Guitar Tablatures";
+        icon = "music-player";
         exec = "${pkgs.tuxguitar}/bin/tuxguitar";
         categories = "Music";
       })

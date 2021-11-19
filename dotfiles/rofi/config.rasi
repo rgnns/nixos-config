@@ -1,6 +1,39 @@
 configuration {
   modi: "window,drun,ssh,combi";
-  theme: "gruvbox-light-hard";
+  icon-theme: "Paper";
   font: "DejaVu Sans Mono 24";
+  cycle: true;
   combi-modi: "window,drun,ssh";
+  show-icons: true;
+}
+
+* {
+  text-font: "DejaVu Sans 24";
+  text-mono-font: "DejaVu Sans Mono 24";
+  icon-font: "FontAwesome 50";
+}
+
+inputbar {
+  children: [ textbox-icon, prompt, entry ];
+  border: 0 0 0;
+}
+
+textbox-icon, prompt {
+  padding: 11px;
+  expand: false;
+  border: 0 1px 0 0;
+  margin: 0 -2px 0 0;
+}
+
+textbox-icon {
+  padding: 7px 4px 0;
+}
+
+entry, element {
+  padding: 10px 13px;
+}
+
+textbox {
+  padding: 24px;
+  margin: 20px;
 }
