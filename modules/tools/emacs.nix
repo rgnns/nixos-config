@@ -21,7 +21,6 @@ in {
         cmake
         coreutils
         editorconfig-core-c
-        elvish
         fd
         gcc
         git

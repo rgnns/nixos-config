@@ -7,6 +7,7 @@
   ];
 
   modules.dev.python.enable = true;
+  modules.shell.elvish.enable = true;
   modules.shell.exa.enable = true;
   modules.shell.zsh.enable = true;
   modules.tools.emacs = {
