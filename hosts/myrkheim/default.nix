@@ -23,10 +23,10 @@
   modules.desktop.apps.firefox.enable = true;
   modules.desktop.apps.pcloud.enable = true;
   modules.desktop.apps.spotify.enable = true;
+  modules.desktop.apps.tuxguitar.enable = true;
 
   user.packages = with pkgs; [
     aseprite
-    tuxguitar
   ];
 
   programs.ssh.startAgent = true;

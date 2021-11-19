@@ -28,6 +28,7 @@ in {
       feh
       libqalculate
       qgnomeplatform
+      paper-icon-theme
       xclip
       xdotool
       xorg.xwininfo
