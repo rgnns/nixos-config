@@ -16,15 +16,6 @@ in {
       libnotify
       lightdm
       rofi
-      xst # add to module
-      (makeDesktopItem {
-        name = "xst";
-        desktopName = "Suckless Terminal";
-        genericName = "Default terminal";
-        icon = "utilities-terminal";
-        exec = "${xst}/bin/xst";
-        categories = "Development;System;Utility";
-      })
     ] ++ lib.optional config.modules.tools.pass.enable rofi-pass;
 
     services = {
@@ -51,12 +42,6 @@ in {
     modules.desktop.services.dunst.enable = true;
     modules.desktop.services.picom.enable = false;
 
-    env.TERMINAL = "xst";
-
-    modules.shell.zsh.rcInit = ''
-      [ "$TERM" = xst-x256color ] && export TERM=xterm-256color
-    '';
-  
     home.configFile =
       let restartI3 = ''
         i3Socket=''${XDG_RUNTIME_DIR:-/run/user/$UID}/i3/ipc-socket.*

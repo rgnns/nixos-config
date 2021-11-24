@@ -7,23 +7,36 @@
   ];
 
   modules.dev.python.enable = true;
-  modules.shell.elvish.enable = true;
-  modules.shell.exa.enable = true;
-  modules.shell.zsh.enable = true;
-  modules.tools.emacs = {
-    enable = true;
-    enableDoom = true;
+  modules.shell = {
+    elvish.enable = true;
+    exa.enable = true;
+    git.enable = true;
+    ssh.enable = true;
+    zsh.enable = true;
   };
-  modules.tools.git.enable = true;
-  modules.tools.gpg.enable = true;
-  modules.tools.pass.enable = true;
-  modules.tools.ssh.enable = true;
-  modules.tools.vim.enable = true;
+  modules.terminal = {
+    alacritty.enable = true;
+    kitty = {
+      enable = true;
+      makeDefault = true;
+    };
+  };
+  modules.tools = {
+    emacs = {
+      enable = true;
+      enabledoom = true;
+    };
+    gpg.enable = true;
+    pass.enable = true;
+    vim.enable = true;
+  };
   modules.desktop.i3.enable = true;
-  modules.desktop.apps.firefox.enable = true;
-  modules.desktop.apps.pcloud.enable = true;
-  modules.desktop.apps.spotify.enable = true;
-  modules.desktop.apps.tuxguitar.enable = true;
+  modules.desktop.apps = {
+    firefox.enable = true;
+    pcloud.enable = true;
+    spotify.enable = true;
+    tuxguitar.enable = true;
+  };
 
   user.packages = with pkgs; [
     aseprite

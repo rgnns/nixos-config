@@ -1,0 +1,114 @@
+window:
+  padding:
+    x: 2
+    y: 2
+
+  # Window decorations
+  #
+  # Available options:
+  # - full: borders and title bar
+  # - none: no border nor title bar
+  # - transparent: title bar, transparent background and buttons
+  # - buttonless: title bar, transparent background and no buttons
+  decorations: buttonless
+
+  # Startup Mode
+  #
+  # Available options:
+  # - Windowed
+  # - Maximized
+  # - Fullscreen
+  startup_mode: Maximized
+
+font:
+  normal:
+    family: "Iosevka SS15"
+    style: Light
+
+  bold:
+    family: "Iosevka SS15"
+    style: Medium
+
+  italic:
+    family: "Iosevka SS15"
+    style: "Light Italic"
+
+  size: 14.0
+
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+  # Thin stroke font rendering (mac only)
+  #
+  # Suitable for Retina displays.
+  use_thin_strokes: true
+
+  draw_bold_text_with_bright_colors: false
+  custom_cursor_colors: true
+
+  colors:
+    primary:
+      background: '0xfefefe'
+      foreground: '0x3c3836'
+    cursor:
+      text: '0xfefefe'
+      cursor: '0x3f3f3f'
+    normal:
+      black: '0x1d2021'
+      red: '0xcc241d'
+      green: '0x98971a'
+      yellow: '0xd79921'
+      blue: '0x458588'
+      magenta: '0xb16286'
+      cyan: '0x689d6a'
+      white: '0xf9f5d7'
+    bright:
+      black: '0x282828'
+      red: '0x9d0006'
+      green: '0x79740e'
+      blue: '0x076678'
+      magenta: '0x8f3f71'
+      cyan: '0x427b58'
+      white: '0xf2e5bc'
+
+  bell:
+    animation: EaseOutExpo
+    color: '0xffffff'
+    duration: 0
+
+  background_opacity: 1.0
+
+  key_bindings:
+    - { key: V, mods: Command, action: Paste }
+    - { key: C, mods: Command, action: Copy }
+    - { key: Q, mods: Command, action: Quit }
+    - { key: N, mods: Command, action: SpawnNewInstance }
+
+  mouse:
+    double_click: { threshold: 300 }
+    triple_click: { threshold: 300 }
+    hide_when_typing: true
+
+  selection:
+    semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+    save_to_clipboard: true
+
+  mouse_bindings:
+    - { mouse: Middle, action: PasteSelection }
+
+  cursor:
+    # Cursor style
+    #
+    # Available options:
+    # - Block
+    # - Underline
+    # - Beam
+    style: Block
+    unfocused_hollow: true
+
+  live_config_reload: true
