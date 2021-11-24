@@ -27,6 +27,19 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.video.hidpi.enable = lib.mkDefault true;
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCode = true; };
+  };
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
+
   # CPUs + Threads per Core
   nix.maxJobs = lib.mkDefault 16;
 

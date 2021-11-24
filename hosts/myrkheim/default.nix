@@ -16,7 +16,8 @@
   };
   modules.terminal = {
     alacritty.enable = true;
-    kitty = {
+    kitty.enable = true;
+    xst = {
       enable = true;
       makeDefault = true;
     };
