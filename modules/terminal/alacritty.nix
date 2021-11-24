@@ -12,23 +12,16 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      alacritty
-      (makeDesktopItem {
-        name = "alacritty";
-        desktopName = "AlacriTTY";
-        icon = "utilities-terminal";
-        exec = "${alacritty}/bin/alacritty";
-        categories = "Development;System;Utility";
-      })
-    ];
+  config = mkIf cfg.enable (mkMerge [
+    {
+      environment.systemPackages = [ pkgs.alacritty ];
 
-    home.configFile."alacritty" = {
-      source = "${configDir}/alacritty";
-      recursive = true;
-    };
-  } // lib.optionalAttrs cfg.makeDefault {
-    env.TERMINAL = "alacritty";
-  };
+      home.configFile."alacritty" = {
+        source = "${configDir}/alacritty";
+        recursive = true;
+      };
+    }
+
+    (mkIf cfg.makeDefault { env.TERMINAL = "alacritty"; })
+  ]);
 }

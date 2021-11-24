@@ -2,7 +2,7 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.tools.git;
+let cfg = config.modules.tools.vim;
     configDir = config.dotfiles.configDir;
 in {
   options.modules.tools.vim = {

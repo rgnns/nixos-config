@@ -12,23 +12,25 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      kitty
-      (makeDesktopItem {
-        name = "kitty";
-        desktopName = "KiTTY";
-        icon = "utilities-terminal";
-        exec = "${kitty}/bin/kitty";
-        categories = "Development;System;Utility";
-      })
-    ];
+  config = mkIf cfg.enable (mkMerge [
+    {
+      environment.systemPackages = with pkgs; [
+        kitty
+        (makeDesktopItem {
+          name = "kitty";
+          desktopName = "KiTTY";
+          icon = "utilities-terminal";
+          exec = "${kitty}/bin/kitty";
+          categories = "Development;System;Utility";
+        })
+      ];
 
-    home.configFile."kitty" = {
-      source = "${configDir}/kitty";
-      recursive = true;
-    };
-  } // lib.optionalAttrs cfg.makeDefault {
-    env.TERMINAL = "kitty";
-  };
+      home.configFile."kitty" = {
+        source = "${configDir}/kitty";
+        recursive = true;
+      };
+    }
+
+    (mkIf cfg.makeDefault { env.TERMINAL = "kitty"; })
+  ]);
 }

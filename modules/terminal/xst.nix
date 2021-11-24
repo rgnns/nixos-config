@@ -11,22 +11,24 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      xst
-      (makeDesktopItem {
-        name = "xst";
-        desktopName = "Suckless Terminal";
-        icon = "utilities-terminal";
-        exec = "${xst}/bin/xst";
-        categories = "Development;System;Utility";
-      })
-    ];
+  config = mkIf cfg.enable (mkMerge [
+    {
+      environment.systemPackages = with pkgs; [
+        xst
+        (makeDesktopItem {
+          name = "xst";
+          desktopName = "Suckless Terminal";
+          icon = "utilities-terminal";
+          exec = "${xst}/bin/xst";
+          categories = "Development;System;Utility";
+        })
+      ];
 
-    modules.shell.zsh.rcInit = ''
-      [ "$TERM" = xst-x256color ] && export TERM=xterm-256color
-    '';
-  } // lib.optionalAttrs cfg.makeDefault {
-    env.TERMINAL = "xst";
-  };
+      modules.shell.zsh.rcInit = ''
+        [ "$TERM" = xst-x256color ] && export TERM=xterm-256color
+      '';
+    }
+
+    (mkIf cfg.makeDefault { env.TERMINAL = "xst"; })
+  ]);
 }

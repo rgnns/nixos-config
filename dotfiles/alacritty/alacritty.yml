@@ -3,15 +3,6 @@ window:
     x: 2
     y: 2
 
-  # Window decorations
-  #
-  # Available options:
-  # - full: borders and title bar
-  # - none: no border nor title bar
-  # - transparent: title bar, transparent background and buttons
-  # - buttonless: title bar, transparent background and no buttons
-  decorations: buttonless
-
   # Startup Mode
   #
   # Available options:

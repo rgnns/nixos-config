@@ -2,9 +2,9 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.tools.ssh;
+let cfg = config.modules.shell.ssh;
 in {
-  options.modules.tools.ssh = {
+  options.modules.shell.ssh = {
     enable = mkEnableOption "SSH";
   };
 

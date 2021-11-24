@@ -2,10 +2,10 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.tools.git;
+let cfg = config.modules.shell.git;
     configDir = config.dotfiles.configDir;
 in {
-  options.modules.tools.git = {
+  options.modules.shell.git = {
     enable = mkEnableOption "Git";
   };
 

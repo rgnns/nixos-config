@@ -24,7 +24,7 @@
   modules.tools = {
     emacs = {
       enable = true;
-      enabledoom = true;
+      enableDoom = true;
     };
     gpg.enable = true;
     pass.enable = true;
