@@ -16,11 +16,11 @@
   };
   modules.terminal = {
     alacritty.enable = true;
-    kitty.enable = true;
-    xst = {
+    kitty = {
       enable = true;
       makeDefault = true;
     };
+    xst.enable = true;
   };
   modules.tools = {
     emacs = {
