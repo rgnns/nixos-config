@@ -3,6 +3,7 @@ call plug#begin()
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'direnv/direnv.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'morhetz/gruvbox'

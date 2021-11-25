@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
   ];
 
+  modules.dev.formatters.enable = true;
   modules.dev.python.enable = true;
   modules.shell = {
     elvish.enable = true;

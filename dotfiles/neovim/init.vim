@@ -7,9 +7,7 @@ function! s:MakeDir(dir)
   endif
 endfunction
 
-if &shell =~# 'fish$'
-  set shell=sh
-endif
+set shell=zsh
 
 let mapleader=','
 

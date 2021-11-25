@@ -29,6 +29,7 @@ in {
             ctrlp-vim
             dart-vim-plugin
             editorconfig-vim
+            direnv-vim
             fzf-vim
             gruvbox-nvim
             neoformat

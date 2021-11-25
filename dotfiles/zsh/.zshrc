@@ -21,6 +21,8 @@ if ! zgenom saved; then
   zgenom compile $ZDOTDIR
 fi
 
+eval "$(direnv hook zsh)"
+
 if [[ $TERM != dumb ]]; then
   source $ZDOTDIR/keybinds.zsh
   source $ZDOTDIR/completion.zsh
