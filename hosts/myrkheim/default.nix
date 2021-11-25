@@ -28,8 +28,9 @@
       enableDoom = true;
     };
     gpg.enable = true;
+    neovim.enable = true;
     pass.enable = true;
-    vim.enable = true;
+    vim.enable = false;
   };
   modules.desktop.i3.enable = true;
   modules.desktop.apps = {
