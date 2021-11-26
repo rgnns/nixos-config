@@ -9,11 +9,21 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = [ pkgs.neovim ];
+    user.packages = with pkgs; [
+      bat
+      delta
+      fzf
+      neovim
+      ripgrep
+    ];
 
     modules.shell.zsh.aliases = {
       vim = "${pkgs.neovim}/bin/nvim";
     };
+
+    home.configFile."bat/config".text = ''
+      --theme="gruvbox-light"
+    '';
 
     home.configFile."nvim" = {
       source = "${configDir}/neovim";
