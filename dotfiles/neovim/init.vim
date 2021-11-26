@@ -7,9 +7,30 @@ function! s:MakeDir(dir)
   endif
 endfunction
 
-set shell=zsh
+function! s:VimPath(filename)
+  return '~/.config/nvim/' . a:filename
+endfunction
 
-let mapleader=','
+function! s:InstallVimPlug()
+  let vimplug_path=expand(s:VimPath('autoload/plug.vim'))
+  if !filereadable(vimplug_path)
+    silent !clear
+    execute "!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  endif
+endfunction
+
+function! s:SourceVimFile(vimfile)
+  let path_name=expand(s:VimPath(a:vimfile))
+  if filereadable(path_name)
+    execute 'source ' . fnameescape(path_name)
+  endif
+endfunction
+
+set shell=zsh
+exec s:InstallVimPlug()
+exec s:SourceVimFile('bundles.vim')
+
+let mapleader=' '
 
 filetype plugin indent on
 if (has("termguicolors"))
@@ -120,18 +141,41 @@ let g:neoterm_default_mod='vertical'
 let g:neoterm_size=60
 let g:neoterm_autoinsert=1
 
-inoremap <c-q> <ESC>:Ttoggle<CR>
+
+" maximizer
 nnoremap <leader>m :MaximizerToggle!<cr>
+
+" neoterm
+inoremap <c-q> <ESC>:Ttoggle<CR>
 nnoremap <c-q> :Ttoggle<cr>
+tnoremap <c-q> <c-\><c-n>:Ttoggle<cr>
+
+" neoformat
 nnoremap <leader>F :Neoformat prettier<cr>
+
+" fzf
+nnoremap <leader><space> :GFiles<cr>
+nnoremap <leader>ff :Rg<cr>
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path(
+  \ "find . -path '*/\.*' -prune -o -print \| sed '1d;s:^..::'",
+  \ fzf#wrap({'dir': expand('%:p:h')}))
+if has('nvim')
+  au! TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
+  au! FileType fzf tunmap <buffer> <Esc>
+endif
+
+" fugitive
+nnoremap <leader>gg :G<cr>
+
+" ctrlp
 nnoremap <leader>p :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>; :CtrlPMRU<cr>
-nnoremap <silen> <c-b> :CtrlPBuffer<cr>
-nnoremap <leader>d :NERDTreeToggle<cr>
+nnoremap <silent> <c-b> :CtrlPBuffer<cr>
+
+" tmux-navigator
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-tnoremap <c-q> <c-\><c-n>:Ttoggle<cr>
 
