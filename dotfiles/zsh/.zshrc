@@ -12,10 +12,11 @@ if ! zgenom saved; then
         $ZGEN_INIT.zwc
 
   zgenom load junegunn/fzf shell
+  zgenom load marlonrichert/zsh-autocomplete zsh-autocomplete.plugin.zsh
   zgenom load zdharma-continuum/fast-syntax-highlighting
-  zgenom load zdharma/history-search-multi-word
   zgenom load zsh-users/zsh-autosuggestions
   zgenom load zsh-users/zsh-completions src
+  zgenom load zsh-users/zsh-history-substring-search
 
   zgenom save
   zgenom compile $ZDOTDIR

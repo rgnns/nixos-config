@@ -2,14 +2,17 @@ call plug#begin()
 
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'direnv/direnv.vim'
 Plug 'ellisonleao/gruvbox.nvim'
+Plug 'janko/vim-test'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'kassio/neoterm'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'puremourning/vimspector'
 Plug 'rktjmp/lush.nvim'
 Plug 'sbdchd/neoformat'
 Plug 'szw/vim-maximizer'

@@ -167,11 +167,36 @@ endif
 " fugitive
 nnoremap <leader>gg :G<cr>
 
-" ctrlp
-nnoremap <leader>p :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <leader>; :CtrlPMRU<cr>
-nnoremap <silent> <c-b> :CtrlPBuffer<cr>
+" lsp-config
+lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
+nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<cr>
+nnoremap <silent> gH <cmd>lua vim.lsp.buf.code_action()<cr>
+nnoremap <silent> gD <cmd>lua vim.lsp.buf.implementation()<cr>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<cr>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<cr>
+nnoremap <silent> gR <cmd>lua vim.lsp.buf.rename()<cr>
+
+" vim-test
+nnoremap <silent> tt :TestNearest<cr>
+nnoremap <silent> tf :TestFile<cr>
+nnoremap <silent> ts :TestSuite<cr>
+nnoremap <silent> t_ :TestLast<cr>
+let test#strategy='neovim'
+let test#neovim#term_position='vertical'
+
+" vimspector
+nnoremap <leader>da :call vimspector#Launch()<cr>
+nnoremap <leader>dx :call vimspector#Reset()<cr>
+nnoremap <S-k> :call vimspector#StepOut()<cr>
+nnoremap <S-l> :call vimspector#StepInto()<cr>
+nnoremap <S-j> :call vimspector#StepOver()<cr>
+nnoremap <leader>d_ :call vimspector#Restart()<cr>
+nnoremap <leader>dn :call vimspector#Continue()<cr>
+nnoremap <leader>drc :call vimspector#RunToCursor()<cr>
+nnoremap <leader>dh :call vimspector#ToggleBreakpoint()<cr>
+nnoremap <leader>de :call vimspector#ToggleConditionalBreakpoint()<cr>
+nnoremap <leader>dX :call vimspector#ClearBreakpoints()<cr>
 
 " tmux-navigator
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
