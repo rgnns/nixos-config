@@ -18,7 +18,7 @@ in {
     ];
 
     modules.shell.zsh.aliases = {
-      vim = "${pkgs.neovim}/bin/nvim";
+      vi = "${pkgs.neovim}/bin/nvim";
     };
 
     home.configFile."bat/config".text = ''

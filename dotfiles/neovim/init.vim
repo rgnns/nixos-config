@@ -103,8 +103,8 @@ if executable('rg')
 endif
 
 let g:netrw_banner=0
-let g:markdown_fenced_languages=['javascript', 'js=javascript', 'json=javascript']
 
+# airline
 let g:airline_mode_map={
   \ '__' : '-',
   \ 'c'  : 'C',
@@ -126,26 +126,18 @@ let g:airline_mode_map={
   \ '^V' : 'V',
 \ }
 let g:airline#extensions#tabline#enabled=1
-let g:ctrlp_dotfiles=1
-let g:ctrlp_show_hidden=1
-let g:vim_markdown_folding_disabled=1
-let g:tmux_navigator_no_mappings=1
-let g:ctrlp_custom_ignore='\.git$\|\.hg$\|\.svn$'
-let g:ctrlp_user_command={
-  \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files']
-    \ },
-    \ 'fallback': 'rg %s --files --color=never --glob ""'
-\ }
-let g:neoterm_default_mod='vertical'
-let g:neoterm_size=60
-let g:neoterm_autoinsert=1
 
+# markdown
+let g:vim_markdown_folding_disabled=1
+let g:markdown_fenced_languages=['javascript', 'js=javascript', 'json=javascript']
 
 " maximizer
 nnoremap <leader>m :MaximizerToggle!<cr>
 
 " neoterm
+let g:neoterm_default_mod='vertical'
+let g:neoterm_size=60
+let g:neoterm_autoinsert=1
 inoremap <c-q> <ESC>:Ttoggle<CR>
 nnoremap <c-q> :Ttoggle<cr>
 tnoremap <c-q> <c-\><c-n>:Ttoggle<cr>
@@ -199,6 +191,7 @@ nnoremap <leader>de :call vimspector#ToggleConditionalBreakpoint()<cr>
 nnoremap <leader>dX :call vimspector#ClearBreakpoints()<cr>
 
 " tmux-navigator
+let g:tmux_navigator_no_mappings=1
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
