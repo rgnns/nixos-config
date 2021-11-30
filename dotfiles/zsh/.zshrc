@@ -9,7 +9,6 @@ if ! zgenom saved; then
          $XDG_CACHE_HOME/zsh/*(N) \
          $ZGEN_INIT.zwc
 
-  zgenom load hlissner/zsh-autopair autopair.zsh
   zgenom load junegunn/fzf shell
   zgenom load marlonrichert/zsh-autocomplete zsh-autocomplete.plugin.zsh
   zgenom load zdharma-continuum/fast-syntax-highlighting
@@ -35,7 +34,6 @@ if [[ $TERM != dumb ]]; then
   _cache fasd --init posix-alias zsh-{hook,{c,w}comp{,-install}}
 
   autoload -Uz compinit && compinit -u -d $ZSH_CACHE/zcompdump
-  autopair-init
 
   eval "$(direnv hook zsh)"
 fi
