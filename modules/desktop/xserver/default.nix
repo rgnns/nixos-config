@@ -2,7 +2,7 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop;
+let cfg = config.modules.desktop.xserver;
     configDir = config.dotfiles.configDir;
 in {
   config = mkIf config.services.xserver.enable {
@@ -25,13 +25,21 @@ in {
     ];
 
     user.packages = with pkgs; [
+      dunst
       feh
+      libnotify
       libqalculate
-      qgnomeplatform
       paper-icon-theme
+      (polybar.override {
+        pulseSupport = true;
+        nlSupport = true;
+      })
+      qgnomeplatform
+      rofi
       xclip
       xdotool
       xorg.xwininfo
+
       (makeDesktopItem {
         name = "scratch-calc";
         desktopName = "Calculator";
@@ -39,7 +47,7 @@ in {
         exec = "scratch \"${tmux}/bin/tmux new-session -s calc -n calc qalc\"";
         categories = "Development";
       })
-    ];
+    ] ++ lib.optional config.modules.tools.pass.enable rofi-pass;
 
     fonts = {
       enableDefaultFonts = true;
@@ -56,25 +64,59 @@ in {
       ];
     };
 
-    home.configFile = with config.modules; {
-      "xtheme/Xresources".source = "${configDir}/Xresources";
-    };
-
     env.GTK_DATA_PREFIX = [ "${config.system.path}" ];
     env.QT_QPA_PLATFORMTHEME = "gnome";
     qt5 = { style = "gtk2"; platformTheme = "gtk2"; };
 
-    services.xserver.displayManager.lightdm.greeters.mini.user = config.user.name;
-    services.xserver.displayManager.lightdm.greeters.mini.extraConfig = ''
-      text-color = "#ff79c6"
-      password-background-color = "#1E2029"
-      window-color = "#181a23"
-      border-color = "#181a23"
-    '';
-    services.xserver.displayManager.sessionCommands = ''
-      export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
-      ${pkgs.xorg.xrdb}/bin/xrdb -merge "$XDG_CONFIG_HOME"/xtheme/Xresources
-    '';
+    services = {
+      redshift.enable = true;
+      xserver = {
+        enable = true;
+        sessionCommands = ''
+          export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+          ${pkgs.xorg.xrdb}/bin/xrdb -merge "$XDG_CONFIG_HOME"/xtheme/Xresources
+        '';
+        displayManager.lightdm = {
+          enable = true;
+          greeters.mini = {
+            user = config.user.name;
+            extraConfig = ''
+              text-color = "#282828"
+              password-background-color = "#f9f5d7"
+              window-color = "#fefefe"
+              border-color = "#fefefe"
+            '';
+          };
+        };
+      };
+    };
+
+    modules.desktop.services.dunst.enable = true;
+    modules.desktop.services.picom.enable = true;
+
+    home.configFile = {
+      "rofi" = { source = "${configDir}/rofi"; recursive = true; };
+      "rofi-pass" = { source = "${configDir}/rofi-pass"; recursive = true; };
+      "gtk-3.0/settings.ini".text = ''
+        [Settings]
+        gtk-icon-theme-name=Paper
+        gtk-cursor-theme-name=Paper
+        gtk-fallback-icon=gnome
+        gtk-application-prefer-dark-theme=true
+        gtk-xft-hinting=1
+        gtk-xfg-hintstyle=hintful
+        gtk-xft-rgba=none
+      '';
+      "gtk-2.0/gtkrc".text = ''
+        gtk-font-name="Sans 10"
+      '';
+      "xtheme/Xresources" = {
+        source = "${configDir}/Xresources";
+        onChange = ''
+          ${pkgs.xorg.xrdb}/bin/xrdb -merge "$XDG_CONFIG_HOME"/xtheme/Xresources
+        '';
+      };
+    };
 
     system.userActivationScripts.cleanupHome = ''
       pushd "${config.user.home}"

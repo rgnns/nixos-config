@@ -9,7 +9,7 @@ dmenu = rofi -dmenu -p dunst:
 follow = none
 font = Fira Sans 14
 format = "<b>%s</b>\n%b"
-frame_color = "#1a1c25"
+frame_color = "#fefefe"
 frame_width = 1
 history_length = 20
 horizontal_padding = 16
@@ -33,16 +33,16 @@ transparency = 5
 word_wrap = yes
 
 [urgency_low]
-background = "#1e2029"
-foreground = "#bbc2cf"
+background = "#fefefe"
+foreground = "#076678"
 timeout = 8
 
 [urgency_normal]
-background = "#2a2d39"
-foreground = "#bbc2cf"
+background = "#fefefe"
+foreground = "#b57614"
 timeout = 14
 
 [urgency_critical]
-background = "#cc6666"
-foreground = "#1e2029"
+background = "#fefefe"
+foreground = "#9d0006"
 timeout = 0

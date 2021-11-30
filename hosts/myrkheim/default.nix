@@ -21,7 +21,6 @@
     zsh.enable = true;
   };
   modules.terminal = {
-    alacritty.enable = true;
     kitty = {
       enable = true;
       makeDefault = true;
@@ -38,7 +37,7 @@
     pass.enable = true;
     vim.enable = false;
   };
-  modules.desktop.i3.enable = true;
+  modules.desktop.xserver.bspwm.enable = true;
   modules.desktop.apps = {
     firefox.enable = true;
     pcloud.enable = true;
