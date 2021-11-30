@@ -5,7 +5,15 @@
 
   boot = {
     initrd = {
-      availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci" ];
+      availableKernelModules = [
+        "ahci"
+        "nvme"
+        "sd_mod"
+        "sdhci_pci"
+        "usb_storage"
+        "usbhid"
+        "xhci_pci"
+      ];
       kernelModules = [];
     };
     kernelModules = [ "kvm-intel" ];
@@ -34,9 +42,9 @@
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
+      libvdpau-va-gl
       vaapiIntel
       vaapiVdpau
-      libvdpau-va-gl
     ];
   };
 
