@@ -104,7 +104,7 @@ endif
 
 let g:netrw_banner=0
 
-# airline
+" airline
 let g:airline_mode_map={
   \ '__' : '-',
   \ 'c'  : 'C',
@@ -127,7 +127,7 @@ let g:airline_mode_map={
 \ }
 let g:airline#extensions#tabline#enabled=1
 
-# markdown
+" markdown
 let g:vim_markdown_folding_disabled=1
 let g:markdown_fenced_languages=['javascript', 'js=javascript', 'json=javascript']
 
