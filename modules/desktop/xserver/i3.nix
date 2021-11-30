@@ -12,6 +12,7 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = [ pkgs.i3status-rust ];
 
+    services.xserver.enable = true;
     services.xserver.displayManager.defaultSession = "none+i3";
     services.xserver.windowManager.i3 = {
       enable = true;

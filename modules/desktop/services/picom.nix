@@ -13,6 +13,7 @@ in {
     home.configFile."picom/picom.conf".source = "${configDir}/picom/picom.conf";
 
     services.picom = {
+      enable = true;
       backend = "glx";
       vSync = false;
       fade = true;
@@ -47,20 +48,6 @@ in {
         shadow-radius = 12;
         blur-kern = "7x7box";
         blur-strength = 320;
-      };
-    };
-    
-    systemd.user.services.picom = {
-      description = "Picom X11 compositor";
-      after = [ "graphical-session-pre.target" ];
-      partOf = [ "graphical-session.target" ];
-      wantedBy = [ "graphical-session.target" ];
-
-      serviceConfig = {
-        ExecStart = "${pkgs.picom}/bin/picom";
-        Restart = "always";
-        RestartSec = 3;
-        Environment = [ "allow_rgb10_configs=false" ];
       };
     };
   };

@@ -10,6 +10,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    services.xserver.enable = true;
     services.xserver.displayManager.defaultSession = "none+bspwm";
     services.xserver.windowManager.bspwm.enable = true;
     home.configFile = {

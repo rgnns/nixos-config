@@ -25,10 +25,10 @@ in {
     ];
 
     user.packages = with pkgs; [
-      dunst
       feh
       libnotify
       libqalculate
+      libsForQt5.qtstyleplugin-kvantum
       paper-icon-theme
       (polybar.override {
         pulseSupport = true;
@@ -66,26 +66,28 @@ in {
 
     env.GTK_DATA_PREFIX = [ "${config.system.path}" ];
     env.QT_QPA_PLATFORMTHEME = "gnome";
+    env.QT_STYLE_OVERRIDE = "kvantum";
     qt5 = { style = "gtk2"; platformTheme = "gtk2"; };
 
     services = {
       redshift.enable = true;
       xserver = {
-        enable = true;
-        sessionCommands = ''
-          export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
-          ${pkgs.xorg.xrdb}/bin/xrdb -merge "$XDG_CONFIG_HOME"/xtheme/Xresources
-        '';
-        displayManager.lightdm = {
-          enable = true;
-          greeters.mini = {
-            user = config.user.name;
-            extraConfig = ''
-              text-color = "#282828"
-              password-background-color = "#f9f5d7"
-              window-color = "#fefefe"
-              border-color = "#fefefe"
-            '';
+        displayManager = {
+          sessionCommands = ''
+            export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+            ${pkgs.xorg.xrdb}/bin/xrdb -merge "$XDG_CONFIG_HOME"/xtheme/Xresources
+          '';
+          lightdm = {
+            enable = true;
+            greeters.mini = {
+              user = config.user.name;
+              extraConfig = ''
+                text-color = "#282828"
+                password-background-color = "#f9f5d7"
+                window-color = "#fefefe"
+                border-color = "#fefefe"
+              '';
+            };
           };
         };
       };
