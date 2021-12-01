@@ -24,7 +24,7 @@ in {
       matchBlocks = {
         id_local = {
           host = lib.concatStringsSep " " [
-            "myrkheim" "vanaheim"
+            "krueger" "voorhees"
           ];
           identityFile = "~/.config/ssh/id_local";
           identitiesOnly = true;

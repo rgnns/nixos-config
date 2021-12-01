@@ -47,7 +47,6 @@ set backspace=indent,eol,start
 set backupcopy=yes
 set backupdir=~/.local/share/nvim/backup//
 set cmdheight=1
-set colorcolumn=80,100
 set completeopt=menuone,noinsert,noselect
 set cursorline
 set diffopt+=vertical

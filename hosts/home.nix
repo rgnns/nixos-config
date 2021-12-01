@@ -5,7 +5,7 @@ with lib;
   networking.hosts =
     let
       hostConfig = {
-        "192.168.86.14" = [ "myrkheim" ];
+        "192.168.86.14" = [ "krueger" ];
       };
       hosts = flatten (attrValues hostConfig);
       hostName = config.networking.hostName;

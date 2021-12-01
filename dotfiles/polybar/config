@@ -1,131 +1,69 @@
 [colors]
-trans = #00000000
-white = #ffffff
-black = #000000
-
-bg = #ffffff
-fg = #2e2e2e
-fg-alt = #424242
-
-acolor = #e53935
-curgent = #43a047
-coccupied = #1e88e5
-
-## Material Colors
-red = #e53935
-pink = #d81b60
-purple = #8e24aa
-deep-purple = #5e35b1
-indigo = #3949ab
-blue = #1e88e5
-light-blue = #039be5
-cyan = #00acc1
-teal = #00897b
-green = #43a047
-light-green = #7cb342
-lime = #c0ca33
-yellow = #fdd835
-amber = #ffb300
-orange = #fb8c00
-deep-orange = #f4511e
-brown = #6d4c41
-grey = #757575
-blue-gray = #546e7a
+background = #fefefe
+background-alt = #ffffff
+foreground = #282828
+foreground-alt = #3c3836
+primary = #076678
+secondary = #b57614
+alert = #9d0006
 
 [bar/main]
-monitor = ${env:MONITOR}
-enable-ipc = true
-wm-restack = i3
-override-redirect = false
-
-fixed-center = false
-line-size = 2
+monitor = ${env:MONITOR:DP-2}
+wm-restack = bspwm
 width = 100%
-height = 38 
-offset-x = 0
-offset-y = 0
-padding-left = 2
-padding-right = 2
+height = 26
+fixed-center = true
 module-margin-left = 1
 module-margin-right = 1
+padding-left = 0
+padding-right = 3
+enable-ipc = true
 
-modules-left = pulseaudio cpu memory
-modules-center = workspaces
-modules-right = wlan date
+background = ${colors.background}
+foreground = ${colors.foreground}
 
-background = ${colors.bg}
-foreground = ${colors.fg}
-border-color = ${colors.bg}
-border-size = 3
+line-size = 3
+line-color = #f00
 
-font-0 = "Fira Code:size=17;2"
-font-1 = "Material Icons:size=20;4"
-font-2 = "FontAwesome:size=24;2"
+font-0 = Fira Code:size=12;1
+font-1 = Material Icons:size=12;4
+font-2 = FontAwesome:size=12;2
 
-[module/workspaces]
-type = internal/i3
-pin-workspaces = false
-enable-click = true
-enable-scroll = false
-format-padding = 0
-wrapping-scroll = false
-reverse-scroll = false
-ws-icon-0 = 
-ws-icon-1 = 
-ws-icon-2 = 
-ws-icon-3 = 
-ws-icon-default =
+modules-left = bspwm
+modules-center = date
+modules-right = pulseaudio powermenu
 
-format = <label-state>
-label-active = %icon%
-label-active-padding = 2
-label-active-foreground = ${colors.acolor}
-label-active-underline = ${colors.acolor}
+tray-position = none
+tray-padding = 2
+tray-background = #8f3f71
 
-label-occupied = %icon%
-label-occupied-padding = 2
-label-occupied-foreground = ${colors.coccupied}
-label-occupied-underline = ${colors.coccupied}
+cursor-click = pointer
+cursor-scroll = ns-resize
 
-label-urgent = %icon%
-label-urgent-padding = 2
-label-urgent-foreground = ${colors.curgent}
-label-urgent-underline = ${colors.curgent}
+[module/bspwm]
+type = internal/bspwm
 
-label-empty = %icon%
-label-empty-padding = 2
-label-empty-foreground = ${colors.fg}
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline = #427b58
+label-focused-padding = 1
+
+label-occupied = %index%
+label-occupied-padding = 1
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 1
 
 [module/date]
 type = internal/date
 interval = 5
-label = %date% %time%
-date = %A, %h %d
-date-alt = %Y-%m-%d
-time = %I:%M %p
-time-alt = %H:%M:%S
-format-prefix = ""
-format-prefix-padding = 1
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-format = <bar-load>
-format-prefix = ""
-format-padding = 1
-bar-load-width = 10
-bar-load-foreground-0 = #c1cb7f
-bar-load-foreground-1 = #d9c37f
-bar-load-foreground-2 = #e4a48a
-bar-load-foreground-3 = #ed9896
-bar-load-indicator = ■
-bar-load-indicator-font = 0
-bar-load-indicator-foreground = #55fdf6e3
-bar-load-fill = ■
-bar-load-fill-font = 0
-bar-load-empty = □
-bar-load-empty-font = 0
-bar-load-empty-foreground = #99586e75
+date = %H:%M%p - %B %d, %Y
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -138,32 +76,23 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 
-[module/memory]
-type = internal/memory
-interval = 3
-format = <bar-used>
-format-prefix = ""
-bar-used-width = 20
-bar-used-foreground-2 = #0000ff
-bar-used-foreground-3 = #00ff00
-bar-used-foreground-0 = #ff0000
-bar-used-indicator = |
-bar-used-indicator-foreground = #ff
-bar-used-fill = ─
-bar-used-fill-font = 2
-bar-used-empty = ─
-bar-used-empty-font = 2
-bar-used-empty-foreground = #444444
+[module/powermenu]
+type = custom/menu
 
-[module/wlan]
-type = internal/network
-interface = ${env:WLP:wlp0s20f3}
-interval = 3.0
-format-connected = <ramp-signal>
-format-disconnected =
-format-disconnected-foreground =
-ramp-signal-0 = ""
-ramp-signal-1 = ""
-ramp-signal-2 = ""
-ramp-signal-3 = ""
-ramp-signal-4 = ""
+format-spacing = 1
+
+label-open = 
+label-close = cancel
+label-separator = |
+
+menu-0-0 = reboot
+menu-0-0-exec = reboot
+menu-0-1 = power off
+menu-0-1-exec = shutdown now
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 1
+margin-bottom = 1
