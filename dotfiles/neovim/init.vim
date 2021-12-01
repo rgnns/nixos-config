@@ -134,7 +134,7 @@ let g:markdown_fenced_languages=['javascript', 'js=javascript', 'json=javascript
 nnoremap <leader>m :MaximizerToggle!<cr>
 
 " neoterm
-let g:neoterm_default_mod='vertical'
+let g:neoterm_default_mod='horizontal'
 let g:neoterm_size=60
 let g:neoterm_autoinsert=1
 inoremap <c-q> <ESC>:Ttoggle<CR>
@@ -174,7 +174,7 @@ nnoremap <silent> tf :TestFile<cr>
 nnoremap <silent> ts :TestSuite<cr>
 nnoremap <silent> t_ :TestLast<cr>
 let test#strategy='neovim'
-let test#neovim#term_position='vertical'
+let test#neovim#term_position='horizontal'
 
 " vimspector
 nnoremap <leader>da :call vimspector#Launch()<cr>

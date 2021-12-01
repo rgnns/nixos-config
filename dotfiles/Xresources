@@ -1,4 +1,10 @@
-Xfg.dpi: 137
+Xft.dpi: 192
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
 
 ! Base16 Gruvbox light, hard
 #define base00 #f9f5d7
@@ -44,6 +50,6 @@ Xfg.dpi: 137
 *.color14:      base0F
 *.color15:      base07
 
-st.scratch.font: JetBrainsMono:pixelsize=24
+st.scratch.font: JetBrainsMono:pixelsize=13
 
-st.font: IosevkaSS15:pixelsize=26
+st.font: IosevkaSS15:pixelsize=13

@@ -29,6 +29,7 @@ in {
       libnotify
       libqalculate
       libsForQt5.qtstyleplugin-kvantum
+      maim
       paper-icon-theme
       (polybar.override {
         pulseSupport = true;
@@ -36,6 +37,7 @@ in {
       })
       qgnomeplatform
       rofi
+      rofi-power-menu
       xclip
       xdotool
       xorg.xdpyinfo
@@ -60,12 +62,14 @@ in {
         font-awesome-ttf
         (iosevka-bin.override { variant = "ss15"; })
         jetbrains-mono
-        material-icons
+        material-design-icons
+        (nerdfonts.override { fonts = [ "FiraCode" ]; })
         siji
       ];
     };
 
     env.GTK_DATA_PREFIX = [ "${config.system.path}" ];
+    env.QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     env.QT_QPA_PLATFORMTHEME = "gnome";
     env.QT_STYLE_OVERRIDE = "kvantum";
     qt5 = { style = "gtk2"; platformTheme = "gtk2"; };

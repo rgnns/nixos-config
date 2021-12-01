@@ -1,41 +1,52 @@
 [colors]
 background = #fefefe
-background-alt = #ffffff
+background-alt = #f9f5d7
 foreground = #282828
 foreground-alt = #3c3836
 primary = #076678
 secondary = #b57614
 alert = #9d0006
 
+red = #cc241d
+green = #98971a
+yellow = #d79921
+blue = #458588
+purple = #b16286
+aqua = #689d6a
+orange = #7c6f64
+
 [bar/main]
 monitor = ${env:MONITOR:DP-2}
 wm-restack = bspwm
 width = 100%
-height = 26
-fixed-center = true
-module-margin-left = 1
-module-margin-right = 1
-padding-left = 0
-padding-right = 3
-enable-ipc = true
+height = 28
+padding-left = 1
+padding-right = 1
+bottom = false
+border-top-size = 2
+border-bottom-size = 4
+border-top-color = ${colors.background}
+border-bottom-color = ${colors.background}
+#enable-ipc = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 2
 line-color = #f00
 
-font-0 = Fira Code:size=12;1
-font-1 = Material Icons:size=12;4
-font-2 = FontAwesome:size=12;2
+font-0 = Fira Code:style:Semibold:pixelsize=11;3
+font-1 = Fira Code Nerd Font:size=18;5
+font-2 = Material Design Icons:style=Bold:size=12;3
+font-3 = unifont:fontformat=truetype:size=13:antialias=true;
 
-modules-left = bspwm
+modules-left = rl launcher rr sep rl bspwm rr
 modules-center = date
-modules-right = pulseaudio powermenu
+modules-right = rl mem rr sep rl pulseaudio rr sep rl wlan powermenu rr
 
-tray-position = none
-tray-padding = 2
-tray-background = #8f3f71
+tray-position = right
+#tray-padding = 2
+#tray-background = #8f3f71
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -43,21 +54,37 @@ cursor-scroll = ns-resize
 [module/bspwm]
 type = internal/bspwm
 
+pin-workspaces = true
+inline-mode = true
+enable-click = true
+enable-scroll = true
+reverse-scroll = false
+
+format = <label-state>
+
+label-separator = " "
+label-separator-background = ${colors.background-alt}
+
 label-focused = %index%
+label-focused-foreground = ${colors.blue}
 label-focused-background = ${colors.background-alt}
-label-focused-underline = #427b58
-label-focused-padding = 1
+label-focused-underline = ${colors.yellow}
+label-focused-padding = 2
 
 label-occupied = %index%
-label-occupied-padding = 1
+label-occupied-foreground = ${colors.foreground}
+label-occupied-background = ${colors.background-alt}
+label-occupied-padding = 2
 
 label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 1
+label-urgent-foreground = ${colors.red}
+label-urgent-background = ${colors.background-alt}
+label-urgent-padding = 2
 
 label-empty = %index%
 label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 1
+label-empty-background = ${colors.background-alt}
+label-empty-padding = 2
 
 [module/date]
 type = internal/date
@@ -65,30 +92,76 @@ interval = 5
 
 date = %H:%M%p - %B %d, %Y
 
+[module/mem]
+type = custom/script
+exec = free -m | sed -n 's/^Mem:\s\+[0-9]\+\s\+\([0-9]\+\)\s.\+/\1/p'
+format = <label>
+format-background = ${colors.background-alt}
+format-foreground = ${colors.blue}
+label = 󰘚 %output% MB
+label-padding = 1
+
 [module/pulseaudio]
 type = internal/pulseaudio
-format-volume = <ramp-volume> <label-volume>
-label-volume = %percentage%
-format-muted-prefix = " "
-label-muted = MUTE
+use-ui-max = false
+interval = 5
 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+format-volume = "󰕾 <label-volume>"
+format-volume-foreground = ${colors.yellow}
+format-volume-background = ${colors.background-alt}
+format-volume-padding = 1
+
+format-muted = "󰝟"
+format-muted-foreground = ${colors.yellow}
+format-muted-background = ${colors.background-alt}
+format-muted-padding = 1
+
+label-volume = %percentage%%
+label-muted = " Muted"
+
+[module/wlan]
+type = internal/network
+interface = wlp0s20f3
+interval = 3.0
+format-connected = <label-connected>
+format-connected-padding = 1
+format-disconnected = "󰤣 "
+format-disconnected-background = ${colors.background-alt}
+format-disconnected-foreground = ${colors.green}
+label-connected = "󰤧 "
+format-connected-foreground = ${colors.green}
+format-connected-background = ${colors.background-alt}
 
 [module/powermenu]
-type = custom/menu
+type = custom/text
+content = "󰐥"
+content-padding = 1
+click-left = rofi -show p -modi p:rofi-power-menu -theme Paper -width 20 -lines 6
+content-foreground = ${colors.purple}
+content-background = ${colors.background-alt}
 
-format-spacing = 1
+[module/launcher]
+type = custom/text
+content = "Krueger"
+content-foreground = ${colors.red}
+content-background = ${colors.background-alt}
+content-padding = 0
+click-left = rofi -show drun
+click-right = maim -s | xclip -selection clipboard -t image/png
 
-label-open = 
-label-close = cancel
-label-separator = |
+[module/sep]
+type = custom/text
+content = " "
 
-menu-0-0 = reboot
-menu-0-0-exec = reboot
-menu-0-1 = power off
-menu-0-1-exec = shutdown now
+[module/rl]
+type = custom/text
+content = %{T3}%{T-}
+content-foreground = ${colors.background-alt}
+
+[module/rr]
+type = custom/text
+content = %{T3}%{T-}
+content-foreground = ${colors.background-alt}
 
 [settings]
 screenchange-reload = true
