@@ -16,7 +16,7 @@ in {
         defaultSession = "none+bspwm";
         sessionCommands = ''
           ${pkgs.bspwm}/bin/bspc wm -r
-          source $XDG_CONFIG_HOME/bspwm/bspwrc
+          source $XDG_CONFIG_HOME/bspwm/bspwmrc
         '';
         lightdm.enable = true;
         lightdm.greeters.mini.enable = true;
