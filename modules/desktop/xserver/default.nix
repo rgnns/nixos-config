@@ -38,6 +38,7 @@ in {
       rofi
       xclip
       xdotool
+      xorg.xdpyinfo
       xorg.xwininfo
 
       (makeDesktopItem {
@@ -83,9 +84,11 @@ in {
               user = config.user.name;
               extraConfig = ''
                 text-color = "#282828"
+                password-color = "#282828"
                 password-background-color = "#f9f5d7"
                 window-color = "#fefefe"
                 border-color = "#fefefe"
+                font-size = 12px
               '';
             };
           };
@@ -99,6 +102,7 @@ in {
     home.configFile = {
       "rofi" = { source = "${configDir}/rofi"; recursive = true; };
       "rofi-pass" = { source = "${configDir}/rofi-pass"; recursive = true; };
+      "polybar" = { source = "${configDir}/polybar"; recursive = true; };
       "gtk-3.0/settings.ini".text = ''
         [Settings]
         gtk-icon-theme-name=Paper
