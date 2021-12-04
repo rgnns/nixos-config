@@ -10,7 +10,7 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      (spotify.override { deviceScaleFactor = 2.5; })
+      (spotify.override { deviceScaleFactor = 1.5; })
       spotify-tui
     ];
   };

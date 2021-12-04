@@ -72,7 +72,7 @@ label-focused-underline = ${colors.yellow}
 label-focused-padding = 2
 
 label-occupied = %index%
-label-occupied-foreground = ${colors.foreground}
+label-occupied-foreground = ${colors.foreground-alt}
 label-occupied-background = ${colors.background-alt}
 label-occupied-padding = 2
 

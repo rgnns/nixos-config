@@ -47,6 +47,7 @@
 
   user.packages = with pkgs; [
     aseprite
+    tdesktop
   ];
 
   programs.ssh.startAgent = true;
