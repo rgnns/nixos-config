@@ -14,6 +14,7 @@
     python.enable = true;
   };
   modules.shell = {
+    direnv.enable = true;
     elvish.enable = true;
     exa.enable = true;
     git.enable = true;

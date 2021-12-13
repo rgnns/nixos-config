@@ -134,8 +134,8 @@ let g:markdown_fenced_languages=['javascript', 'js=javascript', 'json=javascript
 nnoremap <leader>m :MaximizerToggle!<cr>
 
 " neoterm
-let g:neoterm_default_mod='horizontal'
-let g:neoterm_size=60
+let g:neoterm_default_mod='botright'
+let g:neoterm_size=10
 let g:neoterm_autoinsert=1
 inoremap <c-q> <ESC>:Ttoggle<CR>
 nnoremap <c-q> :Ttoggle<cr>

@@ -62,8 +62,6 @@ with lib.my;
   # the bare minimum
   environment.systemPackages = with pkgs; [
     cached-nix-shell
-    direnv
-    nix-direnv
     git
     gnumake
     psmisc
