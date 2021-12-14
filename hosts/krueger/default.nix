@@ -48,6 +48,7 @@
 
   user.packages = with pkgs; [
     aseprite
+    brave
     obsidian
     tdesktop
   ];
