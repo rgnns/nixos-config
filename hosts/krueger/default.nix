@@ -36,6 +36,7 @@
     gpg.enable = true;
     neovim.enable = true;
     pass.enable = true;
+    texlive.enable = true;
     vim.enable = false;
   };
   modules.desktop.xserver.bspwm.enable = true;
