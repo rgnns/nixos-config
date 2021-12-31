@@ -1,13 +1,17 @@
 { config, lib, pkgs, ... }:
 
 {
+  # TODO: laptop needs:
+  # - possible second monitor.
+  # - battery monitoring.
+  # - trackpad support (libinput).
+
   imports = [
     ../home.nix
     ./hardware-configuration.nix
   ];
 
   modules.dev = {
-    formatters.enable = true;
     js = {
       enable = true;
       enableLSP = true;
@@ -17,6 +21,7 @@
   modules.shell = {
     direnv.enable = true;
     elvish.enable = true;
+    exa.enable = true;
     git.enable = true;
     ssh.enable = true;
     zsh.enable = true;
