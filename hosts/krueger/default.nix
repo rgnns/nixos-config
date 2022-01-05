@@ -51,6 +51,8 @@
     aseprite
     brave
     obsidian
+    signal-desktop
+    qmk
     tdesktop
   ];
 
