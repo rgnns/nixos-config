@@ -142,7 +142,7 @@ content-background = ${colors.background-alt}
 
 [module/launcher]
 type = custom/text
-content = "Krueger"
+content = ${env:HOST:Void}
 content-foreground = ${colors.red}
 content-background = ${colors.background-alt}
 content-padding = 0
