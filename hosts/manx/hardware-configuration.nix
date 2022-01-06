@@ -35,7 +35,7 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   services.xserver.videoDrivers = [ "amdgpu" ];
   hardware.video.hidpi.enable = lib.mkDefault true;
-  hardward.opengl = {
+  hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
