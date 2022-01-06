@@ -63,6 +63,8 @@
   programs.ssh.startAgent = true;
   services.openssh.startWhenNeeded = true;
 
+  services.xserver.libinput.enable = true;
+
   # TODO: move to bluetooth module
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
