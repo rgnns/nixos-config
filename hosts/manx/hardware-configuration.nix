@@ -49,5 +49,5 @@
 
   nix.maxJobs = lib.mkDefault 16;
 
-  #env.MONITOR = "DP-2";
+  env.MONITOR = "eDP";
 }
