@@ -12,6 +12,7 @@
   ];
 
   modules.dev = {
+    formatters.enable = true;
     js = {
       enable = true;
       enableLSP = true;
@@ -20,8 +21,6 @@
   };
   modules.shell = {
     direnv.enable = true;
-    elvish.enable = true;
-    exa.enable = true;
     git.enable = true;
     ssh.enable = true;
     zsh.enable = true;
@@ -56,6 +55,8 @@
     aseprite
     brave
     obsidian
+    signal-desktop
+    qmk
     tdesktop
   ];
 
@@ -74,7 +75,7 @@
 
   networking = {
     networkmanager.enable = true;
-    interfaces.wlp0s20f3.useDHCP = false;
+    interfaces.wlo1.useDHCP = false;
     firewall = {
       enable = true;
       allowedTCPPorts = [];
