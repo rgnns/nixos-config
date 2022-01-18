@@ -13,15 +13,15 @@ window:
 
 font:
   normal:
-    family: "Iosevka SS15"
+    family: "Iosevka Custom"
     style: Light
 
   bold:
-    family: "Iosevka SS15"
+    family: "Iosevka Custom"
     style: Medium
 
   italic:
-    family: "Iosevka SS15"
+    family: "Iosevka Custom"
     style: "Light Italic"
 
   size: 12.0
