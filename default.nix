@@ -54,9 +54,10 @@ with lib.my;
 
   services.xserver.dpi = 138;
   environment.variables = {
-    # GDK_SCALE = "1";
-    # GDK_DPI_SCALE = "0.5";
-    # _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2.5";
+    GDK_SCALE = "1.5";
+    GDK_DPI_SCALE = "0.75";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2.5";
   };
 
   # the bare minimum
@@ -64,8 +65,15 @@ with lib.my;
     cached-nix-shell
     git
     gnumake
+    intel-media-driver
+    libva-full
+    libva-utils
     psmisc
     networkmanager
+    nixFlakes
+    v4l-utils
+    vaapiIntel
+    vaapi-intel-hybrid
     vim
     wget
   ];

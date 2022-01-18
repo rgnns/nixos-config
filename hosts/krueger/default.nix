@@ -39,7 +39,7 @@
     texlive.enable = true;
     vim.enable = false;
   };
-  modules.desktop.xserver.bspwm.enable = true;
+  modules.desktop.xserver.gnome.enable = true;
   modules.desktop.apps = {
     firefox.enable = true;
     pcloud.enable = true;
@@ -50,6 +50,7 @@
   user.packages = with pkgs; [
     aseprite
     brave
+    ledger
     obsidian
     signal-desktop
     qmk
