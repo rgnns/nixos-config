@@ -45,7 +45,7 @@
 
     ```sh
     nix-shell -p git
-    git clone https://gitlab.com/gabriellievano/nixos-config.git
+    git clone https://github.com/rgnns/nixos-config.git
     exit
 
     cd nixos-config
