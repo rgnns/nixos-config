@@ -49,23 +49,22 @@ in {
           ${pkgs.bspwm}/bin/bspc wm -r
           source $XDG_CONFIG_HOME/bspwm/bspwmrc
         '';
-        lightdm.enable = true;
-        lightdm.greeters.mini.enable = true;
+        lightdm = {
+          enable = true;
+          greeters.mini = {
+            enable = true;
+            user = config.user.name;
+            extraConfig = ''
+              text-color = "#282828";
+              password-color = "#282828";
+              password-background-color = "#f9f5d7";
+              window-color = "#fefefe";
+              border-color = "#fefefe";
+              font-size = 12px;
+            '';
+          };
+        }; 
       };
-      lightdm = {
-        enable = true;
-        greeters.mini = {
-          user = config.user.name;
-          extraConfig = ''
-            text-color = "#282828";
-            password-color = "#282828";
-            password-background-color = "#f9f5d7";
-            window-color = "#fefefe";
-            border-color = "#fefefe";
-            font-size = 12px;
-          '';
-        };
-      }; 
       windowManager.bspwm.enable = true;
     };
 
